@@ -1,4 +1,4 @@
-package game;
+package Model;
 
 public class Level {
     private int level;

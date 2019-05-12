@@ -1,4 +1,4 @@
-package game;
+package Model;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -6,9 +6,9 @@ import java.util.Random;
 public class BinomialGenerator implements RandomGenerator {
     private Random random = new Random();
     private final int range;
-    private final Level level;
+    private final UserState level;
 
-    public BinomialGenerator(Level level, int range) {
+    public BinomialGenerator(UserState level, int range) {
         this.range = range;
         this.level = level;
     }

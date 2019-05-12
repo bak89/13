@@ -1,4 +1,4 @@
-package game;
+package Model;
 
 public class UserState {
 
@@ -20,7 +20,6 @@ public class UserState {
 
     public void updateLevel(int level) {
         this.level = level;
-
         record = Math.max(record, level);
         money = money * 3;
     }

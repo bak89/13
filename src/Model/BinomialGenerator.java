@@ -6,9 +6,9 @@ import java.util.Random;
 public class BinomialGenerator implements RandomGenerator {
     private Random random = new Random();
     private final int range;
-    private final UserState level;
+    private final Level level;
 
-    public BinomialGenerator(UserState level, int range) {
+    public BinomialGenerator(Level level, int range) {
         this.range = range;
         this.level = level;
     }

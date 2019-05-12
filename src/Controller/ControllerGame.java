@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.GameBoard;
+import Model.UserState;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,12 +29,17 @@ public class ControllerGame implements PropertyChangeListener {
     private Button undo;
     @FXML
     private StackPane stackPane;
+    private UserState userState;
+    private GameBoard gameBoard;
 
     private Group group = new Group();
 
 
+    public void init(UserState userState, GameBoard gameBoard) {
+        this.userState = userState;
+        this.gameBoard = gameBoard;
 
-
+    }
 
 
     public void pause(ActionEvent event) throws IOException {
@@ -51,7 +58,7 @@ public class ControllerGame implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         switch (evt.getPropertyName()) {
             case "New Game":
-               // addAllTiles((ArrayList<Tile>) evt.getNewValue());
+                // addAllTiles((ArrayList<Tile>) evt.getNewValue());
                 break;
             case "Continue":
                 stackPane.getChildren().addAll((Group) evt.getOldValue());
@@ -70,7 +77,7 @@ public class ControllerGame implements PropertyChangeListener {
                 break;
 
             case "Game Over":
-               // gameOver(evt);
+                // gameOver(evt);
                 break;
 
             default:

@@ -1,6 +1,7 @@
 package Controller;
 
-import Model.GameBoard;
+import Model.*;
+import com.sun.tools.javac.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,10 +9,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.net.UnknownServiceException;
 
 
 public class ControllerMenu implements PropertyChangeListener {
@@ -28,13 +29,20 @@ public class ControllerMenu implements PropertyChangeListener {
     @FXML
     private Button language;
 
+    private UserState userState;
+
+    public void init(UserState userState) {
+        this.userState = userState;
+    }
 
     public void newGame(ActionEvent event) throws IOException {
-       //GameBoard gameBoard = new GameBoard();
+
+        GameBoard gameBoard = new GameBoard(Settings.HEIGHT, Settings.WIDTH,
+                new BinomialGenerator(new Level(Settings.DEFAULT_LEVEL), Settings.LEVEL_RANGE));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/ly2.fxml"));
         AnchorPane pane = loader.load();
         anchorPane.getScene().setRoot(pane);
-        //loader.<ControllerGame>getController().init(gameBoard);
+        loader.<ControllerGame>getController().init(userState,gameBoard);
     }
 
     public void continueGame(ActionEvent event) {

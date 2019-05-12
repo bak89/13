@@ -22,6 +22,7 @@ public class Main extends Application {
 
         Parent root = loader.load();
         loader.<ControllerMenu>getController().init(userState);
+
         primaryStage.setTitle("Main Menu");
         primaryStage.setScene(new Scene(root, 386, 653));
         primaryStage.setResizable(false);

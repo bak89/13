@@ -13,12 +13,12 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.net.UnknownServiceException;
+import java.util.Random;
 
 
 public class ControllerMenu implements PropertyChangeListener {
     @FXML
     public AnchorPane anchorPane;
-
     @FXML
     private Button newGame;
     @FXML
@@ -36,13 +36,7 @@ public class ControllerMenu implements PropertyChangeListener {
     }
 
     public void newGame(ActionEvent event) throws IOException {
-
-        GameBoard gameBoard = new GameBoard(Settings.HEIGHT, Settings.WIDTH,
-                new BinomialGenerator(new Level(Settings.DEFAULT_LEVEL), Settings.LEVEL_RANGE));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/ly2.fxml"));
-        AnchorPane pane = loader.load();
-        anchorPane.getScene().setRoot(pane);
-        loader.<ControllerGame>getController().init(userState,gameBoard);
+        ViewChanger.changeToNewGame(anchorPane,userState);
     }
 
     public void continueGame(ActionEvent event) {

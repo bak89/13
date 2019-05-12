@@ -1,21 +1,21 @@
 package Controller;
 
 import Model.GameBoard;
+import Model.Settings;
 import Model.UserState;
+import Views.Tile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-
-
+import javafx.scene.layout.GridPane;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class ControllerGame implements PropertyChangeListener {
 
@@ -28,46 +28,47 @@ public class ControllerGame implements PropertyChangeListener {
     @FXML
     private Button undo;
     @FXML
-    private StackPane stackPane;
+    private GridPane gridPane;
+
     private UserState userState;
     private GameBoard gameBoard;
-
-    private Group group = new Group();
-
 
     public void init(UserState userState, GameBoard gameBoard) {
         this.userState = userState;
         this.gameBoard = gameBoard;
-
+        gameBoard.addPropertyChangeListener(this);
+        for (int x = 0; x < Settings.HEIGHT; x++) {
+            for (int y = 0; y < Settings.WIDTH; y++) {
+                Tile tile = new Tile();
+                tile.setNumber(gameBoard.getValueTile(x, y));
+                final int x1 = x;
+                final int y1 = y;
+                tile.setOnAction(event -> gameBoard.playTile(x1, y1));
+                gameBoard.addPropertyChangeListener(evt -> {
+                            switch (evt.getPropertyName()) {
+                                case "Fall":
+                                    tile.setNumber(gameBoard.getValueTile(x1, y1));
+                                    break;
+                            }
+                        }
+                );
+                gridPane.add(tile, y, x);
+            }
+        }
     }
 
-
-    public void pause(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/ly3.fxml"));
-        AnchorPane pane = loader.load();
-        anchorPane.getScene().setRoot(pane);
+    public void pause(ActionEvent event) {
+      ViewChanger.changeToPause(anchorPane,userState,gameBoard);
     }
-
-
-    public void gameOver(PropertyChangeEvent evt) throws IOException {
-
-    }
-
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch (evt.getPropertyName()) {
-            case "New Game":
-                // addAllTiles((ArrayList<Tile>) evt.getNewValue());
-                break;
             case "Continue":
-                stackPane.getChildren().addAll((Group) evt.getOldValue());
+                gridPane.getChildren().addAll((Group) evt.getOldValue());
                 break;
-            case "Remove":
-                group.getChildren().remove(evt.getNewValue());
-                break;
-            case "Fall":
 
+            case "Fall":
                 break;
             case "Bomb":
 
@@ -77,7 +78,15 @@ public class ControllerGame implements PropertyChangeListener {
                 break;
 
             case "Game Over":
-                // gameOver(evt);
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/ly4.fxml"));
+                    AnchorPane pane = loader.load();
+                    anchorPane.getScene().setRoot(pane);
+                } catch (IOException e) {
+                    System.out.println("Error");
+                }
+                ;
+
                 break;
 
             default:

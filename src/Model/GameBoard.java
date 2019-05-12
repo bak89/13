@@ -1,5 +1,7 @@
 package Model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Vector;
@@ -7,10 +9,13 @@ import java.util.Vector;
 public class GameBoard {
     private final int row;
     private final int column;
+    private PropertyChangeSupport support;
     private RandomGenerator random;
     private Vector<ArrayList<Integer>> gridArray; //ho creato un array di arraylist
 
+
     public GameBoard(int row, int column, RandomGenerator random) {
+        support = new PropertyChangeSupport(this);
         this.row = row;
         this.column = column;
         this.random = random;
@@ -114,6 +119,13 @@ public class GameBoard {
             }
             System.out.println();
         }
+
+        //event
+        support.firePropertyChange("Fall",null,null);
+
+        if(!isClickable()){
+            support.firePropertyChange("Game Over",false,true);
+        }
     }
 
     public boolean isClickable() {
@@ -128,7 +140,9 @@ public class GameBoard {
 
         for (int x = 0; x < row - 1; x++) {
             for (int y = 0; y < column; y++) {
+
                 if (getValueTile(x, y).equals(getValueTile(x + 1, y))) {
+                    System.out.println("x "+ x + ",y "+y + " Verticale");
                     return true;
                 }
             }
@@ -137,11 +151,18 @@ public class GameBoard {
         for (int y = 0; y < column - 1; y++) {
             for (int x = 0; x < row; x++) {
                 if (getValueTile(x, y).equals(getValueTile(x, y + 1))) {
+                    System.out.println("x "+ x + ",y "+y + " Orizzontale");
                     return true;
                 }
             }
         }
+        System.out.println("morto");
         return false;
+    }
+
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        support.addPropertyChangeListener(listener);
     }
 }
 

@@ -1,17 +1,17 @@
 package game;
 
 public class Record {
-    private int initialRecord;
+    private int record;
 
+    public int getRecord() {
+        return record;
+    }
+
+    public void setRecord(int record) {
+        this.record = record;
+    }
 
     public Record(int initialRecord) {
-        this.initialRecord = initialRecord;
-
-        /**
-         * ogni volta che si supera un livello il record
-         * if record < level
-         * record = level
-         *
-         */
+        this.record = initialRecord;
     }
 }

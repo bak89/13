@@ -1,16 +1,17 @@
 package game;
 
 public class Level {
-    private int initialLevel;
+    private int level;
 
+    public int getLevel() {
+        return level;
+    }
 
     public Level(int initialLevel) {
-        this.initialLevel = initialLevel;
-        /**
-         * prendi il numero più grande sul grid.
-         *
-         * if record<level
-         * record = level
-         */
+        this.level = initialLevel;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

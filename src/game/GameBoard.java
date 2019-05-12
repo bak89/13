@@ -1,18 +1,20 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Vector;
 
 public class GameBoard {
     private final int row;
     private final int column;
-    private Random random = new Random();
+    private RandomGenerator random;
     private Vector<ArrayList<Integer>> gridArray; //ho creato un array di arraylist
 
-    public GameBoard(int row, int column) {
+    public GameBoard(int row, int column, RandomGenerator random) {
         this.row = row;
         this.column = column;
+        this.random = random;
         this.gridArray = createNewGrid(row, column, random);
 
         for (int i = 0; i < row; i++) {
@@ -23,20 +25,19 @@ public class GameBoard {
         }
     }
 
-    private static Vector<ArrayList<Integer>> createNewGrid(int row, int column, Random random) {//questo è il random che poi cambio in generator
+    private static Vector<ArrayList<Integer>> createNewGrid(int row, int column, RandomGenerator random) {//questo è il random che poi cambio in generator
         Vector<ArrayList<Integer>> grid = new Vector<>(); //nuovo array di column colonne
         for (int j = 0; j < column; j++) {
             grid.add(new ArrayList<>());
 
             for (int i = 0; i < row; i++) {
-                grid.get(j).add(random.nextInt(4) + 1);
+                grid.get(j).add(random.getRandomNumber());
             }
         }
         return grid;
     }
 
     //click tile
-
 
     public Integer getValueTile(int x, int y) {//ritorna il valore del tile in row e column
         return gridArray.get(y).get(x);//get per colonne quindi inizio per column
@@ -78,7 +79,6 @@ public class GameBoard {
     }
 
     public void playTile(int x, int y) {
-        //isClickable();
         System.out.println("row= " + x + " column= " + y);
 
         ArrayList<Location> neighbors = getNeighborTiles(x, y, new ArrayList<>());
@@ -97,6 +97,16 @@ public class GameBoard {
 
         //non cadono ancora
 
+        for (ArrayList<Integer> forColumn : gridArray) {//remove
+            forColumn.removeIf(Objects::isNull);// è uguale a sta cosa "removeTile -> removeTile == null"
+        }
+
+        //aggiungo nuovi tile
+        for (ArrayList<Integer> forColumn : gridArray) {
+            while (forColumn.size() < row) {
+                forColumn.add(0, random.getRandomNumber());
+            }
+        }
 
         //print an array in console to check the work
         for (int i = 0; i < row; i++) {
@@ -106,72 +116,34 @@ public class GameBoard {
             System.out.println();
         }
     }
-}
 
-
-
-   /* public boolean isClickable() {
-       if row,column has neighbor then
-       return true
-
-        return true;
-    }*/
-
-
-/*
-
-
-
-
-
-    private void moveTiles() {
-        System.out.println("test");
-        for (int i = gridArray.length - 1; i >= 0; i--) {
-            for (int j = gridArray[i].length - 2; j >= 0; j--) {
-                if (gridArray[i][j] != null) {
-                    while (gridArray[i][j + 1] == null) {
-                        gridArray[i][j].setTileY(j + 1);
-                        gridArray[i][j + 1] = gridArray[i][j];
-                        gridArray[i][j] = null;
-                        if (j < gridArray[i].length - 2) {
-                            j++;
-                        }
-                    }
+    public boolean isClickable() {
+        /*for (int x = 0; x < row; x++) {
+            for (int y = 0; y < column; y++) {
+                if (!getNeighborTiles(x, y, new ArrayList<>()).isEmpty()) {
+                    return true;
                 }
             }
         }
-    }
+        return false;*/ //non veloce
 
-
-    public void playTile(int row, int column) {
-        //isClickable();
-        System.out.println("row= " + row + " column= " + column);
-
-        ArrayList<Tile> neighbors = getNeighborTiles(row, column, new ArrayList<>());
-        if (neighbors.isEmpty()) {
-            return;
-        }
-
-        for (Tile tile : neighbors) {//qui abbiamo anche i buchi
-
-            gridArray[tile.getTileX()][tile.getTileY()].setValue(13);
-        }
-
-        getTile(row, column).increaseTile();//from the class tile
-        //moveTiles();
-
-        //print an array in console to check the work
-        for (int i = 0; i < Settings.WIDTH; i++) {
-            for (int j = 0; j < Settings.HEIGHT; j++) {
-                System.out.print(this.gridArray[j][i].getValue() + " ");
+        for (int x = 0; x < row - 1; x++) {
+            for (int y = 0; y < column; y++) {
+                if (getValueTile(x, y).equals(getValueTile(x + 1, y))) {
+                    return true;
+                }
             }
-            System.out.println();
         }
-    }*/
 
-/**
- * Nuovo
- */
-
+        for (int y = 0; y < column - 1; y++) {
+            for (int x = 0; x < row; x++) {
+                if (getValueTile(x, y).equals(getValueTile(x, y + 1))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
 
 

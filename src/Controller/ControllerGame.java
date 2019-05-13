@@ -58,7 +58,7 @@ public class ControllerGame implements PropertyChangeListener {
     }
 
     public void pause(ActionEvent event) {
-      ViewChanger.changeToPause(anchorPane,userState,gameBoard);
+        ViewChanger.changeToPause(anchorPane, userState, gameBoard);
     }
 
     @Override
@@ -73,7 +73,6 @@ public class ControllerGame implements PropertyChangeListener {
                 //in init inizializzare undo con stato board
                 break;
             case "Bomb":
-
                 break;
 
             case "Undo":
@@ -87,8 +86,6 @@ public class ControllerGame implements PropertyChangeListener {
                 } catch (IOException e) {
                     System.out.println("Error");
                 }
-                ;
-
                 break;
 
             default:

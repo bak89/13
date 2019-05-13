@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="386.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerEndGame">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="386.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerEndGame">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="660.0" prefWidth="386.0">
+      <VBox alignment="TOP_CENTER" prefHeight="653.0" prefWidth="386.0">
          <children>
-            <Label text="MARVELOUS!">
+            <Label fx:id="marvelous" text="MARVELOUS!">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin>
@@ -36,7 +36,7 @@
                   <Insets left="150.0" right="150.0" top="10.0" />
                </VBox.margin>
             </TextField>
-            <ImageView fitHeight="321.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="237.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -44,9 +44,9 @@
                   <Image url="@../../../../Pictures/MEmu%20Photo/Screenshots/Screenshot_2019-03-27-17-58-26%20(2).png" />
                </image>
             </ImageView>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="141.0" prefWidth="386.0">
                <children>
-                  <Button fx:id="score" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Score">
+                  <Button fx:id="score" alignment="CENTER" mnemonicParsing="false" onAction="#score" prefHeight="50.0" prefWidth="50.0" text="Score">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -77,7 +77,7 @@
             </HBox>
             <Button fx:id="mainMenu" alignment="CENTER" mnemonicParsing="false" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" text="Main Menu">
                <opaqueInsets>
-                  <Insets />
+                  <Insets bottom="30.0" />
                </opaqueInsets>
             </Button>
          </children>

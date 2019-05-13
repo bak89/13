@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.UserState;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -13,18 +14,13 @@ public class Controllerback implements PropertyChangeListener {
 
     @FXML
     public AnchorPane anchorPane;
-
-
     @FXML
-    private Button back;
+    private Button mainMenu;
+    private UserState userState;
 
-
-    public void back() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/ly1.fxml"));
-        AnchorPane pane = loader.load();
-        anchorPane.getScene().setRoot(pane);
+    public void mainMenu() {
+        ViewChanger.changeToMainMenu(anchorPane, userState);
     }
-
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {

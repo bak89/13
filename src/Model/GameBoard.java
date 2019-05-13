@@ -41,8 +41,7 @@ public class GameBoard {
         return grid;
     }
 
-    //click tile
-
+    //clicktile
     public Integer getValueTile(int x, int y) {//ritorna il valore del tile in row e column
         return gridArray.get(y).get(x);//get per colonne quindi inizio per column
     }
@@ -121,10 +120,10 @@ public class GameBoard {
         }
 
         //event
-        support.firePropertyChange("Fall",null,null);
+        support.firePropertyChange("Fall", null, null);
 
-        if(!isClickable()){
-            support.firePropertyChange("Game Over",false,true);
+        if (!isClickable()) {
+            support.firePropertyChange("Game Over", false, true);
         }
     }
 
@@ -142,7 +141,7 @@ public class GameBoard {
             for (int y = 0; y < column; y++) {
 
                 if (getValueTile(x, y).equals(getValueTile(x + 1, y))) {
-                    System.out.println("x "+ x + ",y "+y + " Verticale");
+                    System.out.println("x " + x + ",y " + y + " Verticale");
                     return true;
                 }
             }
@@ -151,7 +150,7 @@ public class GameBoard {
         for (int y = 0; y < column - 1; y++) {
             for (int x = 0; x < row; x++) {
                 if (getValueTile(x, y).equals(getValueTile(x, y + 1))) {
-                    System.out.println("x "+ x + ",y "+y + " Orizzontale");
+                    System.out.println("x " + x + ",y " + y + " Orizzontale");
                     return true;
                 }
             }
@@ -159,7 +158,6 @@ public class GameBoard {
         System.out.println("morto");
         return false;
     }
-
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);

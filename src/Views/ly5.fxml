@@ -20,7 +20,7 @@
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin></TextArea>
-            <Button fx:id="back" mnemonicParsing="false" onAction="#back" text="back">
+            <Button fx:id="mainMenu" mnemonicParsing="false" onAction="#mainMenu" text="Main Menu">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>

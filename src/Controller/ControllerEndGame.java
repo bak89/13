@@ -1,6 +1,8 @@
 package Controller;
 
 
+import Model.GameBoard;
+import Model.UserState;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -12,30 +14,28 @@ import java.io.IOException;
 
 public class ControllerEndGame implements PropertyChangeListener {
 
-
     @FXML
     public AnchorPane anchorPane;
-
     @FXML
     private Button score;
-
     @FXML
     private Button restart;
-
     @FXML
     private Button mainMenu;
 
+    private UserState userState;
+    private GameBoard gameBoard;
 
-    public void restart() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/ly2.fxml"));
-        AnchorPane pane = loader.load();
-        anchorPane.getScene().setRoot(pane);
+    public void restart() {
+        ViewChanger.changeToNewGame(anchorPane, userState);
     }
 
-    public void mainMenu() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/ly1.fxml"));
-        AnchorPane pane = loader.load();
-        anchorPane.getScene().setRoot(pane);
+    public void mainMenu() {
+        ViewChanger.changeToMainMenu(anchorPane, userState);
+    }
+
+    public void score() {
+        ViewChanger.changeToScore(anchorPane, userState);
     }
 
 

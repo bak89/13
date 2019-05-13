@@ -7,12 +7,10 @@ import Model.UserState;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 import java.util.Random;
 
 public class ViewChanger {
-
 
     public static void changeToNewGame(AnchorPane root, UserState userState) {
 
@@ -31,14 +29,11 @@ public class ViewChanger {
     }
 
     public static void changeToMainMenu(AnchorPane root, UserState userState) {
-
         try {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly1.fxml"));
             Parent mainMenu = loader.load();
             root.getScene().setRoot(mainMenu);
             loader.<ControllerMenu>getController().init(userState);
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,6 +59,15 @@ public class ViewChanger {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    public static void changeToScore(AnchorPane root, UserState userState) {
+        try {
+            FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly5.fxml"));
+            AnchorPane pane = loader.load();
+            root.getScene().setRoot(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

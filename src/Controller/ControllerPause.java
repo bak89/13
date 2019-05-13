@@ -38,7 +38,6 @@ public class ControllerPause {
     }
 
     public void mainMenu() {
-
         ViewChanger.changeToMainMenu(anchorPane, userState);
     }
 

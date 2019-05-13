@@ -57,7 +57,7 @@ public class ControllerGame implements PropertyChangeListener {
         }
     }
 
-    public void pause(ActionEvent event) {
+    public void pause() {
         ViewChanger.changeToPause(anchorPane, userState, gameBoard);
     }
 

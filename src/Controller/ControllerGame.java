@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -26,7 +27,7 @@ public class ControllerGame implements PropertyChangeListener {
     @FXML
     private Button pause;
     @FXML
-    private Button bomb;
+    private ToggleButton bomb;
     @FXML
     private Button undo;
     @FXML
@@ -55,7 +56,14 @@ public class ControllerGame implements PropertyChangeListener {
                 tile.setNumber(gameBoard.getValueTile(x, y));
                 final int x1 = x;
                 final int y1 = y;
-                tile.setOnAction(event -> gameBoard.playTile(x1, y1));
+                tile.setOnAction(event -> {
+                    if (bomb.isSelected()) {
+                        gameBoard.bombTile(x1, y1);
+                    } else {
+                        gameBoard.playTile(x1, y1);
+                    }
+                });
+
                 gameBoard.addPropertyChangeListener(evt -> {
                             switch (evt.getPropertyName()) {
                                 case "Fall":
@@ -88,7 +96,7 @@ public class ControllerGame implements PropertyChangeListener {
                 break;
             case "Level":
                 bank.addInterest();
-                userState.updateRecord((Integer) evt.getNewValue(),bank.getMoney());
+                userState.updateRecord((Integer) evt.getNewValue(), bank.getMoney());
                 levelField.setText(String.valueOf(evt.getNewValue()));
                 break;
 

@@ -66,7 +66,7 @@ public class GameBoard {
     public Integer getValueMin() {
         int min = Integer.MAX_VALUE;
         for (ArrayList<Integer> forColumn : gridArray) {
-            min = Math.min(Collections.min(forColumn), min);
+            min = Math.min(Collections.min(forColumn), min);//problema min null exc
         }
         return min;
     }
@@ -195,6 +195,19 @@ public class GameBoard {
         }
         System.out.println("morto");
         return false;
+    }
+
+    public void bombTile(int x, int y) {
+
+        int oldLevel = getLevel();
+        gridArray.get(y).remove(x);
+        gridArray.get(y).add(0, random.getRandomNumber(oldLevel));
+        int level = getLevel();
+
+        if (level != oldLevel) {//se il livello è cambiato
+            support.firePropertyChange("Level", oldLevel, level);
+        }
+        support.firePropertyChange("Fall", null, null);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

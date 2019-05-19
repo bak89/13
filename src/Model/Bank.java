@@ -52,7 +52,7 @@ public class Bank {
     }
 
     public void addInterest(){
-        setMoney(getMoney()*3);
+        setMoney(getMoney()*2);
     }
 
     public void useBomb() {

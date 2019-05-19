@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.ToggleButton?>
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="386.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerGame">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="660.0" prefWidth="386.0" style="-fx-background-color: black;">
@@ -101,14 +102,14 @@
             </GridPane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="bomb" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="bomb">
+                  <ToggleButton fx:id="bomb" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="bomb">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <HBox.margin>
                         <Insets right="150.0" />
                      </HBox.margin>
-                  </Button>
+                  </ToggleButton>
                   <Button fx:id="undo" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="undo">
                      <opaqueInsets>
                         <Insets />

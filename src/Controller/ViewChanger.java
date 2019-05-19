@@ -23,7 +23,7 @@ public class ViewChanger {
         }*/
                 new BinomialGenerator(Settings.LEVEL_RANGE), Settings.DEFAULT_LEVEL);
 
-        changeToContinue(root, userState, gameBoard);
+        changeToContinue(root, userState, gameBoard, new Bank());
 
     }
 
@@ -38,23 +38,23 @@ public class ViewChanger {
         }
     }
 
-    public static void changeToContinue(AnchorPane root, UserState userState, GameBoard gameBoard) {
+    public static void changeToContinue(AnchorPane root, UserState userState, GameBoard gameBoard, Bank bank) {
         try {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly2.fxml"));
             AnchorPane pane = loader.load();
             root.getScene().setRoot(pane);
-            loader.<ControllerGame>getController().init(userState, gameBoard);
+            loader.<ControllerGame>getController().init(userState, gameBoard, bank);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void changeToPause(AnchorPane root, UserState userState, GameBoard gameBoard) {
+    public static void changeToPause(AnchorPane root, UserState userState, GameBoard gameBoard, Bank bank) {
         try {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly3.fxml"));
             AnchorPane pane = loader.load();
             root.getScene().setRoot(pane);
-            loader.<ControllerPause>getController().init(userState, gameBoard);
+            loader.<ControllerPause>getController().init(userState, gameBoard, bank);
         } catch (IOException e) {
             e.printStackTrace();
         }

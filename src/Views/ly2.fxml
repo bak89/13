@@ -43,12 +43,23 @@
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label text="Record Point" />
+                                    <Label text="Money" textFill="WHITE" />
+                                    <Label fx:id="moneyField" text="moneyField" textFill="WHITE">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin></Label>
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label text="Record Level" />
+                                    <Label text="Level" textFill="WHITE" />
+                                    <Label fx:id="levelField" text="levelField" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin></Label>
                                  </children>
                               </HBox>
                            </children>

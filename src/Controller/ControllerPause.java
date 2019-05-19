@@ -22,10 +22,12 @@ public class ControllerPause {
 
     private UserState userState;
     private GameBoard gameBoard;
+    private Bank bank;
 
-    public void init(UserState userState, GameBoard gameBoard) {
+    public void init(UserState userState, GameBoard gameBoard, Bank bank) {
         this.userState = userState;
         this.gameBoard = gameBoard;
+        this.bank = bank;
     }
 
     public void restart() {
@@ -37,7 +39,7 @@ public class ControllerPause {
     }
 
     public void continueB() {
-        ViewChanger.changeToContinue(anchorPane, userState, gameBoard);
+        ViewChanger.changeToContinue(anchorPane, userState, gameBoard, bank);
     }
 
 }

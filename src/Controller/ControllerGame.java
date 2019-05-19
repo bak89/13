@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Bank;
 import Model.GameBoard;
 import Model.Settings;
 import Model.UserState;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -29,13 +31,23 @@ public class ControllerGame implements PropertyChangeListener {
     private Button undo;
     @FXML
     private GridPane gridPane;
+    @FXML
+    private Label moneyField;
+    @FXML
+    private Label levelField;
 
     private UserState userState;
     private GameBoard gameBoard;
+    private Bank bank;
 
-    public void init(UserState userState, GameBoard gameBoard) {
+    public void init(UserState userState, GameBoard gameBoard, Bank bank) {
         this.userState = userState;
         this.gameBoard = gameBoard;
+        this.bank = bank;
+        moneyField.setText(String.valueOf(bank.getMoney()));
+        levelField.setText(String.valueOf(gameBoard.getLevel()));
+
+        bank.addPropertyChangeListener(this);
         gameBoard.addPropertyChangeListener(this);
         for (int x = 0; x < Settings.HEIGHT; x++) {
             for (int y = 0; y < Settings.WIDTH; y++) {
@@ -58,7 +70,7 @@ public class ControllerGame implements PropertyChangeListener {
     }
 
     public void pause() {
-        ViewChanger.changeToPause(anchorPane, userState, gameBoard);
+        ViewChanger.changeToPause(anchorPane, userState, gameBoard, bank);
     }
 
     @Override
@@ -71,13 +83,17 @@ public class ControllerGame implements PropertyChangeListener {
             case "Fall":
                 //salvare copia board
                 //in init inizializzare undo con stato board
+
+                bank.addMove();
                 break;
             case "Level":
-                break;
-            case "Bomb":
+                bank.addInterest();
+                userState.updateRecord((Integer) evt.getNewValue(),bank.getMoney());
+                levelField.setText(String.valueOf(evt.getNewValue()));
                 break;
 
-            case "Undo":
+            case "Money Change":
+                moneyField.setText(String.valueOf(evt.getNewValue()));
                 break;
 
             case "Game Over":

@@ -3,24 +3,26 @@ package Model;
 public class UserState {
 
     private int recordLevel;
-    private int money;
     private int recordMoney;
 
-    public UserState(int recordLevel, int money) {
+    public UserState(int recordLevel, int recordMoney) {
         this.recordLevel = recordLevel;
-        this.money = money;
+        this.recordMoney = recordMoney;
     }
 
-    public int getMoney() {
-        return money;
+    public int getRecordMoney() {
+        return recordMoney;
     }
 
     public int getRecordLevel() {
         return recordLevel;
     }
 
-    public void updateRecordMoney(int level) {
+
+    public void updateRecord(int level, int money) {
         recordLevel = Math.max(recordLevel, level);
-        money = money * 3;
+        if(level == recordLevel){
+            recordMoney = Math.max(recordMoney,money);//problema
+        }
     }
 }

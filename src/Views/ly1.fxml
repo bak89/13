@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMenu">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="660.0" prefWidth="386.0">
+      <VBox alignment="TOP_CENTER">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>

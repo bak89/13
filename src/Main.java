@@ -25,7 +25,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("Main Menu");
         primaryStage.setScene(new Scene(root, 386, 653));
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.show();
     }
 

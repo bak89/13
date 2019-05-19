@@ -114,9 +114,6 @@ public class GameBoard {
             System.out.println("row= " + x + " column= " + y);
         }
 
-        if (neighbors.isEmpty()) {
-            return;
-        }
         int oldLevel = getLevel();
         gridArray.get(y).set(x, getValueTile(x, y) + 1);//get colonna, set x di quella colonna incremento valore
         int level = getLevel();
@@ -138,7 +135,7 @@ public class GameBoard {
             for (ArrayList<Integer> forColumn : gridArray) {
                 forColumn.removeIf(removeTile -> removeTile == min);
             }
-            support.firePropertyChange("Level", oldLevel, level);
+            //   support.firePropertyChange("Level", oldLevel, level); problema
         }
 
         //aggiungo nuovi tile
@@ -158,6 +155,10 @@ public class GameBoard {
         }
 
         //event
+        if (level != oldLevel) {//se il livello è cambiato
+            support.firePropertyChange("Level", oldLevel, level);
+        }
+
         support.firePropertyChange("Fall", null, null);
 
         if (!isClickable()) {
@@ -194,6 +195,26 @@ public class GameBoard {
             }
         }
         System.out.println("morto");
+        return false;
+    }
+
+    public boolean isClickable(int x,int y){
+        //return !getNeighborTiles(x, y, new ArrayList<>()).isEmpty();
+        Integer value = getValueTile(x, y);
+
+        Location[] tilesNeighbor = new Location[]{
+                tryLocation(x + 1, y),
+                tryLocation(x - 1, y),
+                tryLocation(x, y + 1),
+                tryLocation(x, y - 1)
+        };
+
+        for (Location neighbor : tilesNeighbor) {
+            if (neighbor == null) continue;
+            if (value.equals(getValueTile(neighbor.getX(), neighbor.getY()))) {
+                return true;
+            }
+        }
         return false;
     }
 

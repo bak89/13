@@ -46,6 +46,7 @@ public class ControllerGame implements PropertyChangeListener {
         this.gameBoard = gameBoard;
         this.bank = bank;
         moneyField.setText(String.valueOf(bank.getMoney()));
+        bomb.setDisable(bank.getMoney() < bank.getBombCost());
         levelField.setText(String.valueOf(gameBoard.getLevel()));
 
         bank.addPropertyChangeListener(this);
@@ -59,7 +60,12 @@ public class ControllerGame implements PropertyChangeListener {
                 tile.setOnAction(event -> {
                     if (bomb.isSelected()) {
                         gameBoard.bombTile(x1, y1);
+                        bank.useBomb();
                     } else {
+                        if (!gameBoard.isClickable(x1,y1)) {
+                            return;
+                        }
+                        bank.addMove();
                         gameBoard.playTile(x1, y1);
                     }
                 });
@@ -91,17 +97,21 @@ public class ControllerGame implements PropertyChangeListener {
             case "Fall":
                 //salvare copia board
                 //in init inizializzare undo con stato board
-
-                bank.addMove();
                 break;
             case "Level":
-                bank.addInterest();
-                userState.updateRecord((Integer) evt.getNewValue(), bank.getMoney());
+                if ((Integer) evt.getNewValue() > (Integer) evt.getOldValue()) {
+                    bank.addInterest();
+                }
+                //      userState.updateRecord((Integer) evt.getNewValue(), bank.getMoney());
                 levelField.setText(String.valueOf(evt.getNewValue()));
                 break;
 
             case "Money Change":
                 moneyField.setText(String.valueOf(evt.getNewValue()));
+                bomb.setDisable((Integer) evt.getNewValue() < bank.getBombCost());
+                break;
+            case "Bomb Cost Change":
+                bomb.setDisable(bank.getMoney() < (Integer) evt.getNewValue());
                 break;
 
             case "Game Over":

@@ -11,6 +11,14 @@ public class Bank {
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
+    public Bank() {
+
+    }
+
+    public Bank(int money) {
+        this.money = money;
+    }
+
     public int getMoney() {
         return money;
     }
@@ -51,8 +59,8 @@ public class Bank {
         setMoney(getMoney() + 1);
     }
 
-    public void addInterest(){
-        setMoney(getMoney()*2);
+    public void addInterest() {
+        setMoney(getMoney() * 2);
     }
 
     public void useBomb() {
@@ -61,7 +69,7 @@ public class Bank {
     }
 
     public void useUndo() {
-        setUndoCost(getMoney() - getUndoCost());
+        setMoney(getMoney() - getUndoCost());
         setUndoCost(getUndoCost() * 2);
     }
 

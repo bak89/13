@@ -23,7 +23,7 @@ public class ViewChanger {
         }*/
                 new BinomialGenerator(Settings.LEVEL_RANGE), Settings.DEFAULT_LEVEL);
 
-        changeToContinue(root, userState, gameBoard, new Bank());
+        changeToContinue(root, userState, gameBoard, new Bank(1000));
 
     }
 

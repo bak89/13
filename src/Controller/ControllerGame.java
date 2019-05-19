@@ -51,6 +51,18 @@ public class ControllerGame implements PropertyChangeListener {
 
         bank.addPropertyChangeListener(this);
         gameBoard.addPropertyChangeListener(this);
+
+        undo.setDisable(bank.getMoney() < bank.getUndoCost());
+        undo.setOnAction(event -> {
+            if (gameBoard.canUndo()) {
+                gameBoard.doUndo();
+                bank.useUndo();
+            } else {
+                undo.setText("Sei povero");
+
+            }
+        });
+
         for (int x = 0; x < Settings.HEIGHT; x++) {
             for (int y = 0; y < Settings.WIDTH; y++) {
                 Tile tile = new Tile();
@@ -63,7 +75,7 @@ public class ControllerGame implements PropertyChangeListener {
                         bank.useBomb();
                         bomb.setSelected(false);
                     } else {
-                        if (!gameBoard.isClickable(x1,y1)) {
+                        if (!gameBoard.isClickable(x1, y1)) {
                             return;
                         }
                         bank.addMove();
@@ -110,9 +122,14 @@ public class ControllerGame implements PropertyChangeListener {
             case "Money Change":
                 moneyField.setText(String.valueOf(evt.getNewValue()));
                 bomb.setDisable((Integer) evt.getNewValue() < bank.getBombCost());
+                undo.setDisable((Integer) evt.getNewValue() < bank.getUndoCost());
                 break;
             case "Bomb Cost Change":
                 bomb.setDisable(bank.getMoney() < (Integer) evt.getNewValue());
+                break;
+
+            case "Undo Cost Change":
+                undo.setDisable(bank.getMoney() < (Integer) evt.getNewValue());
                 break;
 
             case "Game Over":

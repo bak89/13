@@ -9,7 +9,7 @@ public class GameBoard {
     private final int column;
     private PropertyChangeSupport support;
     private RandomGenerator random;
-    private Vector<ArrayList<Integer>> gridArray; //ho creato un array di arraylist
+    private Stack<Vector<ArrayList<Integer>>> undoStack = new Stack<>(); //ho creato uno stack di array di arraylist
 
     /**
      * Game board do stuff
@@ -23,7 +23,7 @@ public class GameBoard {
         this.row = row;
         this.column = column;
         this.random = random;
-        this.gridArray = createNewGrid(row, column, random, initialLevel);
+        this.undoStack.push(createNewGrid(row, column, random, initialLevel));
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -48,16 +48,42 @@ public class GameBoard {
         return grid;
     }
 
+    private Vector<ArrayList<Integer>> getGridArray() {
+        return undoStack.peek();
+    }
+
+    public boolean canUndo() {
+        return undoStack.size() > 1;
+    }
+
+    public void doUndo() {
+        undoStack.pop();
+        support.firePropertyChange("Fall", null, null);
+    }
+
+    private void saveState() {
+        Vector<ArrayList<Integer>> grid = new Vector<>(); //nuovo array di column colonne
+        for (int j = 0; j < column; j++) {
+            grid.add(new ArrayList<>());
+
+            for (int i = 0; i < row; i++) {
+                grid.get(j).add(getGridArray().get(j).get(i));
+            }
+        }
+        undoStack.push(grid);
+
+    }
+
     //clicktile
     public Integer getValueTile(int x, int y) {//ritorna il valore del tile in row e column
-        return gridArray.get(y).get(x);//get per colonne quindi inizio per column
+        return getGridArray().get(y).get(x);//get per colonne quindi inizio per column
     }
 
     //ritorna val massimo del grid
     public Integer getLevel() {
         //   return gridArray.stream().map(Collections::max).max(Comparator.naturalOrder()).get();
         int max = Integer.MIN_VALUE;
-        for (ArrayList<Integer> forColumn : gridArray) {
+        for (ArrayList<Integer> forColumn : getGridArray()) {
             max = Math.max(Collections.max(forColumn), max);
         }
         return max;
@@ -65,7 +91,7 @@ public class GameBoard {
 
     public Integer getValueMin() {
         int min = Integer.MAX_VALUE;
-        for (ArrayList<Integer> forColumn : gridArray) {
+        for (ArrayList<Integer> forColumn : getGridArray()) {
             min = Math.min(Collections.min(forColumn), min);//problema min null exc
         }
         return min;
@@ -107,6 +133,7 @@ public class GameBoard {
     }
 
     public void playTile(int x, int y) {
+        saveState();
         System.out.println("row= " + x + " column= " + y);
 
         ArrayList<Location> neighbors = getNeighborTiles(x, y, new ArrayList<>());
@@ -115,31 +142,31 @@ public class GameBoard {
         }
 
         int oldLevel = getLevel();
-        gridArray.get(y).set(x, getValueTile(x, y) + 1);//get colonna, set x di quella colonna incremento valore
+        getGridArray().get(y).set(x, getValueTile(x, y) + 1);//get colonna, set x di quella colonna incremento valore
         int level = getLevel();
 
         for (Location tile : neighbors) {//qui settiamo i null(creiamo i buchi)
-            gridArray.get(tile.getY()).set(tile.getX(), null);//get del mio array, get dalla colonna e poi setta null i vicini
+            getGridArray().get(tile.getY()).set(tile.getX(), null);//get del mio array, get dalla colonna e poi setta null i vicini
         }
 
 
         //non cadono ancora
 
-        for (ArrayList<Integer> forColumn : gridArray) {//remove
+        for (ArrayList<Integer> forColumn : getGridArray()) {//remove
             forColumn.removeIf(Objects::isNull);// è uguale a sta cosa "removeTile -> removeTile == null"
         }
 
         //incrementare livello, in modo che quando incrementato, i tile piccoli cadono
         if (level != oldLevel) {//se il livello è cambiato
             int min = getValueMin();
-            for (ArrayList<Integer> forColumn : gridArray) {
+            for (ArrayList<Integer> forColumn : getGridArray()) {
                 forColumn.removeIf(removeTile -> removeTile == min);
             }
             //   support.firePropertyChange("Level", oldLevel, level); problema
         }
 
         //aggiungo nuovi tile
-        for (ArrayList<Integer> forColumn : gridArray) {
+        for (ArrayList<Integer> forColumn : getGridArray()) {
             while (forColumn.size() < row) {
                 forColumn.add(0, random.getRandomNumber(level));
             }
@@ -198,7 +225,7 @@ public class GameBoard {
         return false;
     }
 
-    public boolean isClickable(int x,int y){
+    public boolean isClickable(int x, int y) {
         //return !getNeighborTiles(x, y, new ArrayList<>()).isEmpty();
         Integer value = getValueTile(x, y);
 
@@ -219,10 +246,10 @@ public class GameBoard {
     }
 
     public void bombTile(int x, int y) {
-
+        saveState();
         int oldLevel = getLevel();
-        gridArray.get(y).remove(x);
-        gridArray.get(y).add(0, random.getRandomNumber(oldLevel));
+        getGridArray().get(y).remove(x);
+        getGridArray().get(y).add(0, random.getRandomNumber(oldLevel));
         int level = getLevel();
 
         if (level != oldLevel) {//se il livello è cambiato
@@ -235,5 +262,3 @@ public class GameBoard {
         support.addPropertyChangeListener(listener);
     }
 }
-
-

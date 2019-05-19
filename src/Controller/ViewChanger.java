@@ -1,12 +1,10 @@
 package Controller;
 
-import Model.GameBoard;
-import Model.RandomGenerator;
-import Model.Settings;
-import Model.UserState;
+import Model.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
+
 import java.io.IOException;
 import java.util.Random;
 
@@ -14,15 +12,16 @@ public class ViewChanger {
 
     public static void changeToNewGame(AnchorPane root, UserState userState) {
 
-        GameBoard gameBoard = new GameBoard(Settings.HEIGHT, Settings.WIDTH, new RandomGenerator() {
+        GameBoard gameBoard = new GameBoard(Settings.HEIGHT, Settings.WIDTH, /*new RandomGenerator() {
             Random random = new Random();
 
             @Override
-            public int getRandomNumber() {
+            public int getRandomNumber(int level) {
 
-                return random.nextInt(5) + 1;
+                return random.nextInt(level-1) + 1;
             }
-        }); //new BinomialGenerator(new Level(Settings.DEFAULT_LEVEL), Settings.LEVEL_RANGE));
+        }*/
+                new BinomialGenerator(Settings.LEVEL_RANGE), Settings.DEFAULT_LEVEL);
 
         changeToContinue(root, userState, gameBoard);
 
@@ -76,7 +75,7 @@ public class ViewChanger {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly6.fxml"));
             Parent pane = loader.load();
             root.getScene().setRoot(pane);
-           // loader.<ControllerSettings>getController().init(userState);
+            // loader.<ControllerSettings>getController().init(userState);
         } catch (IOException e) {
             e.printStackTrace();
         }

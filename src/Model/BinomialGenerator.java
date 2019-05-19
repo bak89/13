@@ -4,13 +4,12 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class BinomialGenerator implements RandomGenerator {
-    private Random random = new Random();
     private final int range;
-    private final Level level;
+    private Random random = new Random();
 
-    public BinomialGenerator(Level level, int range) {
+
+    public BinomialGenerator(int range) {
         this.range = range;
-        this.level = level;
     }
 /*
     public int getInitialBlockX() {
@@ -18,14 +17,14 @@ public class BinomialGenerator implements RandomGenerator {
         return this.random.nextInt(Settings.GRID_DIMENSION_X);
     }*/
 
-    public int getRandomNumber() {
+    public int getRandomNumber(int level) {
 
-        int max = level.getLevel();
-        int min = level.getLevel() - range;
+        int max = level;
+        int min = level - range;
         int randomNum = random.nextInt((max - min) + 1) + min;
         long[][] probabilities = this.getBinomialDistribution(min, max, max);
 
-        if (level.getLevel() < 16) {
+        if (level < 16) {
             Arrays.sort(probabilities[1]);
             this.reverseArray(probabilities[1]);
         }

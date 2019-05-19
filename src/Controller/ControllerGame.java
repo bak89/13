@@ -72,6 +72,8 @@ public class ControllerGame implements PropertyChangeListener {
                 //salvare copia board
                 //in init inizializzare undo con stato board
                 break;
+            case "Level":
+                break;
             case "Bomb":
                 break;
 

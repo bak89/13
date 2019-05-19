@@ -2,10 +2,7 @@ package Model;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
-import java.util.Vector;
+import java.util.*;
 
 public class GameBoard {
     private final int row;
@@ -21,12 +18,12 @@ public class GameBoard {
      * @param column
      * @param random
      */
-    public GameBoard(int row, int column, RandomGenerator random) {
+    public GameBoard(int row, int column, RandomGenerator random, int initialLevel) {
         support = new PropertyChangeSupport(this);
         this.row = row;
         this.column = column;
         this.random = random;
-        this.gridArray = createNewGrid(row, column, random);
+        this.gridArray = createNewGrid(row, column, random, initialLevel);
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -36,21 +33,42 @@ public class GameBoard {
         }
     }
 
-    private static Vector<ArrayList<Integer>> createNewGrid(int row, int column, RandomGenerator random) {//questo è il random che poi cambio in generator
+    private static Vector<ArrayList<Integer>> createNewGrid(int row, int column, RandomGenerator random, int initialLevel) {//questo è il random che poi cambio in generator
         Vector<ArrayList<Integer>> grid = new Vector<>(); //nuovo array di column colonne
         for (int j = 0; j < column; j++) {
             grid.add(new ArrayList<>());
 
             for (int i = 0; i < row; i++) {
-                grid.get(j).add(random.getRandomNumber());
+                grid.get(j).add(random.getRandomNumber(initialLevel));
             }
         }
+        //avere numero più grande sotto
+        Random randomMax = new Random();
+        grid.get(randomMax.nextInt(column)).set(row - 1, initialLevel);
         return grid;
     }
 
     //clicktile
     public Integer getValueTile(int x, int y) {//ritorna il valore del tile in row e column
         return gridArray.get(y).get(x);//get per colonne quindi inizio per column
+    }
+
+    //ritorna val massimo del grid
+    public Integer getLevel() {
+        //   return gridArray.stream().map(Collections::max).max(Comparator.naturalOrder()).get();
+        int max = Integer.MIN_VALUE;
+        for (ArrayList<Integer> forColumn : gridArray) {
+            max = Math.max(Collections.max(forColumn), max);
+        }
+        return max;
+    }
+
+    public Integer getValueMin() {
+        int min = Integer.MAX_VALUE;
+        for (ArrayList<Integer> forColumn : gridArray) {
+            min = Math.min(Collections.min(forColumn), min);
+        }
+        return min;
     }
 
     private Location tryLocation(int x, int y) {//non crea problemi se fuori
@@ -99,11 +117,14 @@ public class GameBoard {
         if (neighbors.isEmpty()) {
             return;
         }
+        int oldLevel = getLevel();
+        gridArray.get(y).set(x, getValueTile(x, y) + 1);//get colonna, set x di quella colonna incremento valore
+        int level = getLevel();
 
         for (Location tile : neighbors) {//qui settiamo i null(creiamo i buchi)
             gridArray.get(tile.getY()).set(tile.getX(), null);//get del mio array, get dalla colonna e poi setta null i vicini
         }
-        gridArray.get(y).set(x, getValueTile(x, y) + 1);//get colonna, set x di quella colonna incremento valore
+
 
         //non cadono ancora
 
@@ -111,19 +132,21 @@ public class GameBoard {
             forColumn.removeIf(Objects::isNull);// è uguale a sta cosa "removeTile -> removeTile == null"
         }
 
+        //incrementare livello, in modo che quando incrementato, i tile piccoli cadono
+        if (level != oldLevel) {//se il livello è cambiato
+            int min = getValueMin();
+            for (ArrayList<Integer> forColumn : gridArray) {
+                forColumn.removeIf(removeTile -> removeTile == min);
+            }
+            support.firePropertyChange("Level", oldLevel, level);
+        }
+
         //aggiungo nuovi tile
         for (ArrayList<Integer> forColumn : gridArray) {
             while (forColumn.size() < row) {
-                forColumn.add(0, random.getRandomNumber());
+                forColumn.add(0, random.getRandomNumber(level));
             }
         }
-
-        //incrementare livello, in modo che quando incrementato, i tile piccoli cadono
-
-/*        for (ArrayList<Integer> forColumn : gridArray) {
-            forColumn.removeIf(removeTile -> removeTile == 1);
-        }
-        */
 
 
         //print an array in console to check the work

@@ -2,26 +2,25 @@ package Model;
 
 public class UserState {
 
-    private int record;
-
+    private int recordLevel;
     private int money;
+    private int recordMoney;
+
+    public UserState(int recordLevel, int money) {
+        this.recordLevel = recordLevel;
+        this.money = money;
+    }
 
     public int getMoney() {
         return money;
     }
 
-    public int getRecord() {
-        return record;
+    public int getRecordLevel() {
+        return recordLevel;
     }
 
-
-    public void updateRecordMoney(Level level) {
-        record = Math.max(record, level.getLevel());
+    public void updateRecordMoney(int level) {
+        recordLevel = Math.max(recordLevel, level);
         money = money * 3;
-    }
-
-    public UserState(int record, int money) {
-        this.record = record;
-        this.money = money;
     }
 }

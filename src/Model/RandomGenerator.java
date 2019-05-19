@@ -2,5 +2,5 @@ package Model;
 
 public interface RandomGenerator {
 
-    int getRandomNumber();
+    int getRandomNumber(int level);
 }

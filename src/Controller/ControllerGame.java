@@ -61,6 +61,7 @@ public class ControllerGame implements PropertyChangeListener {
                     if (bomb.isSelected()) {
                         gameBoard.bombTile(x1, y1);
                         bank.useBomb();
+                        bomb.setSelected(false);
                     } else {
                         if (!gameBoard.isClickable(x1,y1)) {
                             return;

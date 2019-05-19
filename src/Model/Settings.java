@@ -11,7 +11,9 @@ public class Settings {
     public static final int HEIGHT = 5;
 
     public static final int DEFAULT_LEVEL = 6;
-    public static final int LEVEL_RANGE = 5;
+    public static final int LEVEL_RANGE = 7;
+
+    public static final double PROBABILITY = 0.4;
 
     public static final Map<Integer, Color> BLOCK_COLORS = new HashMap<>() {{
         put(0, Color.rgb(252, 252, 252));

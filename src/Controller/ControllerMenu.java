@@ -16,7 +16,7 @@ public class ControllerMenu implements PropertyChangeListener {
     @FXML
     private Button newGame;
     @FXML
-    private Button continueGame;
+    private Button settings;
     @FXML
     private Button score;
 
@@ -34,9 +34,15 @@ public class ControllerMenu implements PropertyChangeListener {
         ViewChanger.changeToNewGame(anchorPane, userState);
     }
 
-    public void continueGame() {
+   /* public void continueGame() {
         ViewChanger.changeToContinue(anchorPane, userState, gameBoard);
-    }
+    }*/
+
+   public void settings(){
+       ViewChanger.changeToSettings(anchorPane,userState);
+   }
+
+
 
     public void score() {
         ViewChanger.changeToScore(anchorPane, userState);

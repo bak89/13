@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMenu">
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMenu">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="660.0" prefWidth="386.0">
          <children>
@@ -41,7 +41,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="continueGame" alignment="CENTER" layoutX="103.0" layoutY="330.0" mnemonicParsing="false" onAction="#continueGame" prefHeight="80.0" prefWidth="200.0" text="Continue">
+            <Button fx:id="settings" alignment="CENTER" layoutX="103.0" layoutY="330.0" mnemonicParsing="false" onAction="#settings" prefHeight="80.0" prefWidth="200.0" text="Settings">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

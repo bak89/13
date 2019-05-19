@@ -3,6 +3,7 @@ package Model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Vector;
 
@@ -13,7 +14,13 @@ public class GameBoard {
     private RandomGenerator random;
     private Vector<ArrayList<Integer>> gridArray; //ho creato un array di arraylist
 
-
+    /**
+     * Game board do stuff
+     *
+     * @param row
+     * @param column
+     * @param random
+     */
     public GameBoard(int row, int column, RandomGenerator random) {
         support = new PropertyChangeSupport(this);
         this.row = row;
@@ -110,6 +117,14 @@ public class GameBoard {
                 forColumn.add(0, random.getRandomNumber());
             }
         }
+
+        //incrementare livello, in modo che quando incrementato, i tile piccoli cadono
+
+/*        for (ArrayList<Integer> forColumn : gridArray) {
+            forColumn.removeIf(removeTile -> removeTile == 1);
+        }
+        */
+
 
         //print an array in console to check the work
         for (int i = 0; i < row; i++) {

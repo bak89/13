@@ -70,4 +70,15 @@ public class ViewChanger {
             e.printStackTrace();
         }
     }
+
+    public static void changeToSettings(AnchorPane root, UserState userState) {
+        try {
+            FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly6.fxml"));
+            Parent pane = loader.load();
+            root.getScene().setRoot(pane);
+           // loader.<ControllerSettings>getController().init(userState);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

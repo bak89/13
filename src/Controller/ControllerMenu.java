@@ -1,8 +1,10 @@
 package Controller;
 
 import Model.*;
+import animatefx.animation.BounceInLeft;
 import animatefx.animation.FadeIn;
 import animatefx.animation.Flash;
+import animatefx.animation.LightSpeedIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,6 +44,7 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
 
     public void newGame() {
         ViewChanger.changeToNewGame(anchorPane, userState);
+
     }
 
    /* public void continueGame() {
@@ -69,6 +72,11 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new FadeIn(anchorPane).play();
+      /*  newGame.setOnAction(event -> {
+            new BounceInLeft(newGame).play();
+
+        });*/
+
     }
 }
 

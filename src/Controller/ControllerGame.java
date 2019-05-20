@@ -6,6 +6,7 @@ import Model.Settings;
 import Model.UserState;
 import Views.Tile;
 import animatefx.animation.FadeIn;
+import animatefx.animation.GlowText;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Paint;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -121,19 +123,24 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                 }
                 //      userState.updateRecord((Integer) evt.getNewValue(), bank.getMoney());
                 levelField.setText(String.valueOf(evt.getNewValue()));
+                new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("green")).play();//soldi verde
+                new GlowText(levelField, Paint.valueOf("white"), Paint.valueOf("green")).play();//livello verde
                 break;
 
             case "Money Change":
                 moneyField.setText(String.valueOf(evt.getNewValue()));
                 bomb.setDisable((Integer) evt.getNewValue() < bank.getBombCost());
                 undo.setDisable((Integer) evt.getNewValue() < bank.getUndoCost());
+
                 break;
             case "Bomb Cost Change":
                 bomb.setDisable(bank.getMoney() < (Integer) evt.getNewValue());
+                new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("red")).play();//animazione soldi rosso
                 break;
 
             case "Undo Cost Change":
                 undo.setDisable(bank.getMoney() < (Integer) evt.getNewValue());
+                new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("red")).play();//animazione soldi rosso
                 break;
 
             case "Game Over":

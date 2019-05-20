@@ -1,69 +1,133 @@
-#anchorPane{
+#anchorPane {
     -fx-background-color: #2b2c30;
     -fx-font-size: 13;
 }
 
 #newGame{
     -fx-background-color: #127c5d;
-    -fx-background-radius: 90;
+    -fx-background-radius: 45;
+
 }
-#settings{
+/*#newGame:hover {
+    -fx-background-color: #127c5d;
+    -fx-background-radius: 45;
+
+
+}*/
+
+#settings {
     -fx-background-color: #a540b8;
-    -fx-background-radius: 90;
+    -fx-background-radius: 45;
 }
 
-#score{
+#score {
     -fx-background-color: #333cb8;
-    -fx-background-radius: 90;
+    -fx-background-radius: 45;
 
 }
 
-#language{
+#language {
     -fx-background-color: #b83747;
-    -fx-background-radius: 90;
+    -fx-background-radius: 45;
 }
 
-#pause{
+#pause {
     -fx-background-color: #b83f2f;
     -fx-background-radius: 90;
 }
-#bomb{
+
+#bomb {
     -fx-background-color: #feec00;
     -fx-background-radius: 90;
 }
-#undo{
+
+#undo {
     -fx-background-color: #1b90b8;
-    -fx-background-radius: 90;
+    -fx-background-radius: 45;
 }
-#continueB{
+
+#continueB {
     -fx-background-color: #b83747;
-    -fx-background-radius: 90;
+    -fx-background-radius: 45;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
 }
-#restart{
 
+#restart {
     -fx-background-color: #b821a4;
-    -fx-background-radius: 90;
+    -fx-background-radius: 45;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
 }
-#mainMenu{
+
+#mainMenu {
     -fx-background-color: #4db86c;
-    -fx-background-radius: 90;
+    -fx-background-radius: 45;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
 }
 
-#gridSize{
-    -fx-background-color: #237db8;
-    -fx-background-radius: 90;
-}
-#changeColumn{
-    -fx-background-color: #237db8;
-    -fx-background-radius: 90;
-}
-#changeRow{
-    -fx-background-color: #237db8;
-    -fx-background-radius: 90;
+#labelSettings {
+    -fx-font-size: 35;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ff0023;
 }
 
-#apply{
+#gridSize {
+    -fx-background-color: #237db8;
+    -fx-background-radius: 45;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+/*
+#mr{
+    -fx-background-color: #237db8;
+    -fx-background-radius: 15;
+}
+#mc{
+    -fx-background-color: #237db8;
+    -fx-background-radius: 15;
+}*/
+#changeColumn {
+    -fx-background-color: #237db8;
+    -fx-background-radius: 15;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+
+#changeRow {
+    -fx-background-color: #237db8;
+    -fx-background-radius: 15;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+
+#apply {
     -fx-background-color: #b839b1;
-    -fx-background-radius: 90;
+    -fx-background-radius: 45;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
 }
 
+#moneyField {
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+#levelField {
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+#marvelous {
+    -fx-font-size: 40;
+    -fx-font-weight: bold;
+}
+#titleScore{
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+}
+#labelScore {
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}

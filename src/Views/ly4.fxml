@@ -22,7 +22,7 @@
                   <Font size="35.0" />
                </font>
             </Label>
-            <Label text="SCORE" textFill="RED">
+            <Label fx:id="titleScore" text="SCORE" textFill="RED">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -30,7 +30,7 @@
                   <Font size="19.0" />
                </font>
                <graphic>
-                  <ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
                      <image>
                         <Image url="@icon/icons8_star_100px_1.png" />
                      </image>
@@ -38,55 +38,62 @@
                </graphic>
             </Label>
             <Label fx:id="labelScore" text="NUMBER" textFill="WHITE" />
-            <HBox alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="score" alignment="CENTER" mnemonicParsing="false" onAction="#score" prefHeight="80.0" prefWidth="150.0" text="Score">
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button fx:id="mainMenu" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#mainMenu" prefHeight="80.0" prefWidth="150.0" text="Main Menu">
+                           <opaqueInsets>
+                              <Insets bottom="30.0" />
+                           </opaqueInsets>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@icon/icons8_menu_2_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="restart" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#restart" prefHeight="80.0" prefWidth="150.0" text="Restart">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@icon/icons8_restart_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Button fx:id="score" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#score" prefHeight="80.0" prefWidth="100.0" text="Score" textFill="WHITE">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
                      <graphic>
-                        <ImageView>
+                        <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
                               <Image url="@icon/icons8_winner_document_100px.png" />
                            </image>
                         </ImageView>
                      </graphic>
-                  </Button>
-                  <Button fx:id="mainMenu" alignment="CENTER" mnemonicParsing="false" onAction="#mainMenu" prefHeight="80.0" prefWidth="150.0" text="Main Menu">
-                     <opaqueInsets>
-                        <Insets bottom="30.0" />
-                     </opaqueInsets>
-                     <graphic>
-                        <ImageView>
-                           <image>
-                              <Image url="@icon/icons8_menu_2_100px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="restart" alignment="CENTER" mnemonicParsing="false" onAction="#restart" prefHeight="80.0" prefWidth="150.0" text="Restart">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </HBox.margin>
-                     <graphic>
-                        <ImageView>
-                           <image>
-                              <Image url="@icon/icons8_restart_100px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Button>
                </children>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-            </HBox>
+            </VBox>
          </children>
       </VBox>
    </children>

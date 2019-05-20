@@ -1,4 +1,69 @@
-.root{
-    -fx-background-color: #5626d9;
-    -fx-font-size: 15;
+#anchorPane{
+    -fx-background-color: #2b2c30;
+    -fx-font-size: 13;
 }
+
+#newGame{
+    -fx-background-color: #127c5d;
+    -fx-background-radius: 90;
+}
+#settings{
+    -fx-background-color: #a540b8;
+    -fx-background-radius: 90;
+}
+
+#score{
+    -fx-background-color: #333cb8;
+    -fx-background-radius: 90;
+
+}
+
+#language{
+    -fx-background-color: #b83747;
+    -fx-background-radius: 90;
+}
+
+#pause{
+    -fx-background-color: #b83f2f;
+    -fx-background-radius: 90;
+}
+#bomb{
+    -fx-background-color: #feec00;
+    -fx-background-radius: 90;
+}
+#undo{
+    -fx-background-color: #1b90b8;
+    -fx-background-radius: 90;
+}
+#continueB{
+    -fx-background-color: #b83747;
+    -fx-background-radius: 90;
+}
+#restart{
+
+    -fx-background-color: #b821a4;
+    -fx-background-radius: 90;
+}
+#mainMenu{
+    -fx-background-color: #4db86c;
+    -fx-background-radius: 90;
+}
+
+#gridSize{
+    -fx-background-color: #237db8;
+    -fx-background-radius: 90;
+}
+#changeColumn{
+    -fx-background-color: #237db8;
+    -fx-background-radius: 90;
+}
+#changeRow{
+    -fx-background-color: #237db8;
+    -fx-background-radius: 90;
+}
+
+#apply{
+    -fx-background-color: #b839b1;
+    -fx-background-radius: 90;
+}
+

@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
@@ -24,9 +26,12 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
     private Button settings;
     @FXML
     private Button score;
-
     @FXML
     private Button language;
+    @FXML
+    private Label moneyField;
+    @FXML
+    private Label levelField;
 
     private UserState userState;
     private GameBoard gameBoard;
@@ -43,11 +48,9 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
         ViewChanger.changeToContinue(anchorPane, userState, gameBoard);
     }*/
 
-   public void settings(){
-       ViewChanger.changeToSettings(anchorPane,userState);
-   }
-
-
+    public void settings() {
+        ViewChanger.changeToSettings(anchorPane, userState);
+    }
 
     public void score() {
         ViewChanger.changeToScore(anchorPane, userState);
@@ -65,7 +68,7 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //new Flash().play();
+        new FadeIn(anchorPane).play();
     }
 }
 

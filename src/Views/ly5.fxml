@@ -4,11 +4,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controllerback">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../Design.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controllerback">
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,15 +21,29 @@
                <font>
                   <Font size="24.0" />
                </font>
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@icon/icons8_winner_document_100px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
             <TextArea fx:id="textArea">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin></TextArea>
-            <Button fx:id="mainMenu" mnemonicParsing="false" onAction="#mainMenu" style="-fx-background-color: yellow;" text="Main Menu">
+            <Button fx:id="mainMenu" mnemonicParsing="false" onAction="#mainMenu" text="Main Menu">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@icon/icons8_menu_2_100px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
       </VBox>

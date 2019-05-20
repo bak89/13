@@ -1,5 +1,6 @@
 import Controller.ControllerMenu;
 import Model.UserState;
+import animatefx.animation.FadeIn;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,12 +12,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-    //aggiunta lingua
-       // ResourceBundle bundle = ResourceBundle.getBundle("easter.example", new Locale("de", "DE"));
+        //aggiunta lingua
+        // ResourceBundle bundle = ResourceBundle.getBundle("easter.example", new Locale("de", "DE"));
 
-        UserState userState = new UserState(6,1);
+        UserState userState = new UserState(6, 1);
 
-       // Parent root = FXMLLoader.load(getClass().getResource("Views/ly1.fxml"));
+        // Parent root = FXMLLoader.load(getClass().getResource("Views/ly1.fxml"));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Views/ly1.fxml"));
 
@@ -24,9 +25,16 @@ public class Main extends Application {
         loader.<ControllerMenu>getController().init(userState);
 
         primaryStage.setTitle("Main Menu");
-        primaryStage.setScene(new Scene(root, 386, 653));
+        Scene scene = new Scene(root, 386, 653);
+        //primaryStage.setScene(new Scene(root, 386, 653));
+        scene.getStylesheets().add("Design.css");
+        primaryStage.setScene(scene);
         primaryStage.setResizable(true);
         primaryStage.show();
+
+        //animate the stage
+        new FadeIn(root).play();
+
     }
 
 

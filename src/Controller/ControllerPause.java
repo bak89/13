@@ -1,12 +1,17 @@
 package Controller;
 
 import Model.*;
+import animatefx.animation.FadeIn;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ControllerPause {
+
+public class ControllerPause implements Initializable {
 
     @FXML
     public AnchorPane anchorPane;
@@ -42,5 +47,9 @@ public class ControllerPause {
         ViewChanger.changeToContinue(anchorPane, userState, gameBoard, bank);
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        new FadeIn(anchorPane).play();
+    }
 }
 

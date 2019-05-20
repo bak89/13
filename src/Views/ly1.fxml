@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="anchorPane" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMenu">
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMenu">
    <children>
       <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
@@ -33,7 +33,7 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="newGame" alignment="CENTER" mnemonicParsing="false" onAction="#newGame" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: yellow;" text="New Game">
+            <Button fx:id="newGame" alignment="CENTER" mnemonicParsing="false" onAction="#newGame" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffb44e;" text="New Game">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

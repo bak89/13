@@ -1,16 +1,21 @@
 package Controller;
 
 import Model.*;
+import animatefx.animation.FadeIn;
+import animatefx.animation.Flash;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class ControllerMenu implements PropertyChangeListener {
+public class ControllerMenu implements PropertyChangeListener, Initializable {
     @FXML
     public AnchorPane anchorPane;
     @FXML
@@ -56,6 +61,11 @@ public class ControllerMenu implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //new Flash().play();
     }
 }
 

@@ -5,9 +5,11 @@ import Model.GameBoard;
 import Model.Settings;
 import Model.UserState;
 import Views.Tile;
+import animatefx.animation.FadeIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,9 +20,11 @@ import javafx.scene.layout.GridPane;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class ControllerGame implements PropertyChangeListener {
+public class ControllerGame implements PropertyChangeListener, Initializable {
 
     @FXML
     public AnchorPane anchorPane;
@@ -148,4 +152,8 @@ public class ControllerGame implements PropertyChangeListener {
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        new FadeIn(anchorPane).play();
+    }
 }

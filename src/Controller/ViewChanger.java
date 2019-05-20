@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import animatefx.animation.FadeIn;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;

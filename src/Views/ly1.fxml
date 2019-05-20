@@ -33,7 +33,7 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="newGame" alignment="CENTER" mnemonicParsing="false" onAction="#newGame" prefHeight="80.0" prefWidth="200.0" text="New Game">
+            <Button fx:id="newGame" alignment="CENTER" mnemonicParsing="false" onAction="#newGame" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: yellow;" text="New Game">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -41,14 +41,14 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="settings" alignment="CENTER" layoutX="103.0" layoutY="330.0" mnemonicParsing="false" onAction="#settings" prefHeight="80.0" prefWidth="200.0" text="Settings">
+            <Button fx:id="settings" alignment="CENTER" layoutX="103.0" layoutY="330.0" mnemonicParsing="false" onAction="#settings" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: yellow;" text="Settings">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="score" alignment="CENTER" mnemonicParsing="false" onAction="#score" prefHeight="80.0" prefWidth="80.0" text="Score">
+                  <Button fx:id="score" alignment="CENTER" mnemonicParsing="false" onAction="#score" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: yellow;" text="Score">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -56,7 +56,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="language" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="EN">
+                  <Button fx:id="language" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: yellow;" text="EN">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>

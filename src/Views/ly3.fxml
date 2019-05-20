@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="386.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerPause">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerPause">
    <children>
-      <VBox alignment="CENTER" prefHeight="660.0" prefWidth="386.0">
+      <VBox alignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
-            <Button fx:id="continueB" alignment="CENTER" mnemonicParsing="false" onAction="#continueB" prefHeight="102.0" prefWidth="206.0" text="Continue">
+            <Button fx:id="continueB" alignment="CENTER" mnemonicParsing="false" onAction="#continueB" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="Continue">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -26,7 +26,7 @@
                   </ContextMenu>
                </contextMenu>
             </Button>
-            <Button fx:id="restart" alignment="CENTER" mnemonicParsing="false" onAction="#restart" prefHeight="102.0" prefWidth="206.0" text="Restart">
+            <Button fx:id="restart" alignment="CENTER" mnemonicParsing="false" onAction="#restart" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="Restart">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -41,7 +41,7 @@
                   </ContextMenu>
                </contextMenu>
             </Button>
-            <Button fx:id="mainMenu" alignment="CENTER" mnemonicParsing="false" onAction="#mainMenu" prefHeight="102.0" prefWidth="206.0" text="Main Menu">
+            <Button fx:id="mainMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#mainMenu" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="Main Menu">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

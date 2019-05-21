@@ -42,13 +42,24 @@ public class ControllerSettings implements PropertyChangeListener, Initializable
         ViewChanger.changeToMainMenu(anchorPane, userState);
     }
 
-    public void changeSettings(){
-        changeColumn.valueProperty().addListener(new ChangeListener<Number>() {
+    public void changeRow(){
+/*
+        changeRow.valueProperty().addListener((observable, oldValue, newValue) -> );
+
+       /* changeColumn.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 changeColumn.setValue(Settings.HEIGHT);
             }
-        });
+        });*/
+    }
+
+    public void changeColumn(){
+      //  changeColumn.valueProperty().addListener((observable, oldValue, newValue) -> );
+    }
+
+    public void changeTile(){
+      //  changeTile.valueProperty().addListener((observable, oldValue, newValue) -> );
     }
     @Override
     public void propertyChange(PropertyChangeEvent evt) {

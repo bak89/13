@@ -8,5 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="io.github.typhon0:AnimateFX:1.2.1" level="project" />
+    <orderEntry type="library" name="javax.xml.bind:jaxb-api:2.3.1" level="project" />
+    <orderEntry type="library" name="org.glassfish.jaxb:jaxb-runtime:2.3.1" level="project" />
   </component>
 </module>

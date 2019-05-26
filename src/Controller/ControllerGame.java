@@ -6,11 +6,8 @@ import Model.Settings;
 import Model.UserState;
 import Views.Tile;
 import animatefx.animation.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
@@ -20,7 +17,6 @@ import javafx.scene.paint.Paint;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -29,8 +25,6 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
 
     @FXML
     public AnchorPane anchorPane;
-    @FXML
-    private Button pause;
     @FXML
     private ToggleButton bomb;
     @FXML
@@ -51,6 +45,11 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
         this.gameBoard = gameBoard;
         this.bank = bank;
         moneyField.setText(String.valueOf(bank.getMoney()));
+        bomb.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            double scale = newValue ? 1.1 : 1.0;
+            bomb.setScaleX(scale);
+            bomb.setScaleY(scale);
+        });
         bomb.setDisable(bank.getMoney() < bank.getBombCost());
         levelField.setText(String.valueOf(gameBoard.getLevel()));
 
@@ -71,22 +70,22 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
         for (int x = 0; x < Settings.HEIGHT; x++) {
             for (int y = 0; y < Settings.WIDTH; y++) {
                 Tile tile = new Tile();
-                tile.setNumber(gameBoard.getValueTile(x, y));
+                updateTile(tile, x, y);
                 final int x1 = x;
                 final int y1 = y;
                 tile.setOnAction(event -> {
                     if (bomb.isSelected()) {
-                        AnimationFX a = new BounceOutDown(tile);
+                        AnimationFX a = new BounceOut(tile);
                         a.setOnFinished(e -> {
                             gameBoard.bombTile(x1, y1);
                             bank.useBomb();
-                            new BounceInUp(tile).play();
                         });
-                        a.play();
+                        a.setResetOnFinished(true).setSpeed(2.5).play();
                         bomb.setSelected(false);
                     } else {
                         if (!gameBoard.isClickable(x1, y1)) {
-                            new Wobble(tile).play();
+                            //new Wobble(tile).play();
+                            new Pulse(tile).setSpeed(4).setCycleCount(2).play();
                             return;
                         }
                         bank.addMove();
@@ -97,7 +96,7 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                 gameBoard.addPropertyChangeListener(evt -> {
                             switch (evt.getPropertyName()) {
                                 case "Fall":
-                                    tile.setNumber(gameBoard.getValueTile(x1, y1));
+                                    updateTile(tile, x1, y1);
                                     break;
                             }
                         }
@@ -111,18 +110,21 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
         ViewChanger.changeToPause(anchorPane, userState, gameBoard, bank);
     }
 
+    private void updateTile(Tile tile, int x, int y) {
+        int value = gameBoard.getValueTile(x, y);
+        tile.setNumber(value, value == gameBoard.getLevel());
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch (evt.getPropertyName()) {
             case "Fall":
-                //salvare copia board
-                //in init inizializzare undo con stato board
+                //tutto gestito da tile
                 break;
             case "Level":
                 if ((Integer) evt.getNewValue() > (Integer) evt.getOldValue()) {
                     bank.addInterest();
                 }
-                //
                 levelField.setText(String.valueOf(evt.getNewValue()));
                 new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("green")).play();//soldi verde
                 new GlowText(levelField, Paint.valueOf("white"), Paint.valueOf("green")).play();//livello verde

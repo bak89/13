@@ -3,18 +3,13 @@ package Controller;
 import Model.UserState;
 import animatefx.animation.FadeIn;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerScore implements PropertyChangeListener, Initializable {
+public class ControllerScore implements Initializable {
 
     @FXML
     public AnchorPane anchorPane;
@@ -27,11 +22,6 @@ public class ControllerScore implements PropertyChangeListener, Initializable {
     }
     public void mainMenu() {
         ViewChanger.changeToMainMenu(anchorPane, userState);
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-
     }
 
     @Override

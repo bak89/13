@@ -33,12 +33,12 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
     private Label levelField;
 
     private UserState userState;
-    private GameBoard gameBoard;
+   // private GameBoard gameBoard;
 
     public void init(UserState userState) {
         this.userState = userState;
-        levelField.setText(String.valueOf(userState.getRecordLevel()));
-        moneyField.setText(String.valueOf(userState.getRecordMoney()));
+        levelField.setText(String.valueOf(userState.getRecord().getLevel()));
+        moneyField.setText(String.valueOf(userState.getRecord().getMoves()));
     }
 
     public void newGame() {

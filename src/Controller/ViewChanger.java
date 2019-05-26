@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.util.Random;
+
 
 public class ViewChanger {
 

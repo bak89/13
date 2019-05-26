@@ -1,28 +1,29 @@
 package Model;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class UserState {
 
-    private int recordLevel;
-    private int recordMoney;
+    @XmlElement
+    private Score record;
 
-    public UserState(int recordLevel, int recordMoney) {
-        this.recordLevel = recordLevel;
-        this.recordMoney = recordMoney;
+    public UserState(Score record) {
+        this.record = record;
     }
 
-    public int getRecordMoney() {
-        return recordMoney;
+    public UserState() {
     }
 
-    public int getRecordLevel() {
-        return recordLevel;
+    public Score getRecord() {
+        return record;
     }
 
-
-    public void updateRecord(int level, int money) {
-        recordLevel = Math.max(recordLevel, level);
-        if(level == recordLevel){
-            recordMoney = Math.max(recordMoney,money);//problema
+    public void updateRecord(Score score) {
+        if (record.compareTo(score) < 0) {
+            record = score;
         }
     }
+
 }

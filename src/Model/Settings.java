@@ -6,7 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Settings {
+    public static final String CONFIG_FILE = "config.xml";
+    public static final int MAX_RECORDS = 10;
     public static final int DEFAULT_LEVEL = 6;
+    public static final int DEFAULT_MONEY = 1000;
     public static final int LEVEL_RANGE = 7;
     public static final double PROBABILITY = 0.4;
     public static final Map<Integer, Color> BLOCK_COLORS = new HashMap<>() {{
@@ -35,7 +38,7 @@ public class Settings {
 
     }};
 
-    public static int TILE_SIZE = 60;
-    public static int WIDTH = 5;
-    public static int HEIGHT = 5;
+    public  int TILE_SIZE = 60;
+    public  int WIDTH = 5;
+    public  int HEIGHT = 5;
 }

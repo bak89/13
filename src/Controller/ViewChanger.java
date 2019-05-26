@@ -12,7 +12,7 @@ public class ViewChanger {
 
     public static void changeToNewGame(AnchorPane root, UserState userState) {
 
-        GameBoard gameBoard = new GameBoard(Settings.HEIGHT, Settings.WIDTH, /*new RandomGenerator() {
+        GameBoard gameBoard = new GameBoard(userState.getSettings().HEIGHT, userState.getSettings().WIDTH, /*new RandomGenerator() {
             Random random = new Random();
 
             @Override
@@ -23,7 +23,7 @@ public class ViewChanger {
         }*/
                 new BinomialGenerator(Settings.LEVEL_RANGE), Settings.DEFAULT_LEVEL);
 
-        changeToContinue(root, userState, gameBoard, new Bank(1000));
+        changeToContinue(root, userState, gameBoard, new Bank(Settings.DEFAULT_MONEY));
 
     }
 
@@ -60,12 +60,12 @@ public class ViewChanger {
         }
     }
 
-    public static void changeToScore(AnchorPane root, UserState userState) {
+    public static void changeToScore(AnchorPane root, UserState userState, Integer currentRecord) {
         try {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly5.fxml"));
             AnchorPane pane = loader.load();
             root.getScene().setRoot(pane);
-            loader.<ControllerScore>getController().init(userState);
+            loader.<ControllerScore>getController().init(userState, currentRecord);
         } catch (IOException e) {
             e.printStackTrace();
         }

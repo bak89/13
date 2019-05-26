@@ -2,7 +2,6 @@ package Controller;
 
 import Model.Bank;
 import Model.GameBoard;
-import Model.Settings;
 import Model.UserState;
 import Views.Tile;
 import animatefx.animation.*;
@@ -67,9 +66,9 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
             }
         });
 
-        for (int x = 0; x < Settings.HEIGHT; x++) {
-            for (int y = 0; y < Settings.WIDTH; y++) {
-                Tile tile = new Tile();
+        for (int x = 0; x < userState.getSettings().HEIGHT; x++) {
+            for (int y = 0; y < userState.getSettings().WIDTH; y++) {
+                Tile tile = new Tile(userState.getSettings().TILE_SIZE);
                 updateTile(tile, x, y);
                 final int x1 = x;
                 final int y1 = y;

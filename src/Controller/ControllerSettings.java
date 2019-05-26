@@ -3,15 +3,13 @@ package Controller;
 import Model.Settings;
 import Model.UserState;
 import animatefx.animation.FadeIn;
-
+import io.Serializer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
+import javax.xml.bind.JAXBException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -29,20 +27,25 @@ public class ControllerSettings implements Initializable {
     private UserState userState;
 
     public void mainMenu() {
+        try {
+            new Serializer().save(userState, Settings.CONFIG_FILE);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
         ViewChanger.changeToMainMenu(anchorPane, userState);
     }
 
     public void init(UserState userState) {
         this.userState = userState;
-        changeRow.setValue(Settings.HEIGHT);
+        changeRow.setValue(userState.getSettings().HEIGHT);
         changeRow.valueProperty().addListener((observable, oldValue, newValue) ->
-                Settings.HEIGHT = newValue.intValue());
-        changeColumn.setValue(Settings.WIDTH);
+                userState.getSettings().HEIGHT = newValue.intValue());
+        changeColumn.setValue(userState.getSettings().WIDTH);
         changeColumn.valueProperty().addListener((observable, oldValue, newValue) ->
-                Settings.WIDTH = newValue.intValue());
-        changeTile.setValue(Settings.TILE_SIZE);
+                userState.getSettings().WIDTH = newValue.intValue());
+        changeTile.setValue(userState.getSettings().TILE_SIZE);
         changeTile.valueProperty().addListener((observable, oldValue, newValue) ->
-                Settings.TILE_SIZE = newValue.intValue());
+                userState.getSettings().TILE_SIZE = newValue.intValue());
     }
 
     @Override

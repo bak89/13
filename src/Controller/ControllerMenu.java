@@ -54,7 +54,7 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
     }
 
     public void score() {
-        ViewChanger.changeToScore(anchorPane, userState);
+        ViewChanger.changeToScore(anchorPane, userState, null);
     }
 
     public void language(ActionEvent event) throws IOException {

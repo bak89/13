@@ -10,8 +10,8 @@ import javafx.scene.paint.Color;
 
 public class Tile extends Button {
 
-    public Tile() {
-        setPrefSize(Settings.TILE_SIZE, Settings.TILE_SIZE);
+    public Tile(int size) {
+        setPrefSize(size, size);
         setNumber(0, false);
     }
 

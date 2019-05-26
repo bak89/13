@@ -40,7 +40,7 @@ public class Score implements Comparable<Score> {
 
     @Override
     public String toString() {
-        return "Score : level = " + level;
+        return "Level = " + level + ", moves = "+ moves;
     }
 
     @Override

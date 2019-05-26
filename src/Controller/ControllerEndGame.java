@@ -3,18 +3,15 @@ package Controller;
 
 import Model.*;
 import Views.Tile;
-import animatefx.animation.*;
+import animatefx.animation.FadeIn;
+import io.Serializer;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.IOException;
+import javax.xml.bind.JAXBException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,18 +25,25 @@ public class ControllerEndGame implements Initializable {
     private GridPane gridPane;
 
     private UserState userState;
+    private Integer currentRecord;
 
 
     public void init(UserState userState, GameBoard gameBoard, Bank bank) {
         this.userState = userState;
 
         labelScore.setText(String.valueOf(gameBoard.getLevel()));
-        userState.updateRecord(new Score(gameBoard.getLevel(), bank.getMoney()));
+        currentRecord = userState.updateRecord(new Score(gameBoard.getLevel(), bank.getMoney()));
 
-        for (int x = 0; x < Settings.HEIGHT; x++) {
-            for (int y = 0; y < Settings.WIDTH; y++) {
-                Tile tile = new Tile();
-                tile.setNumber(gameBoard.getValueTile(x, y),false);
+        try {
+            new Serializer().save(userState, Settings.CONFIG_FILE);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        for (int x = 0; x < userState.getSettings().HEIGHT; x++) {
+            for (int y = 0; y < userState.getSettings().WIDTH; y++) {
+                Tile tile = new Tile(userState.getSettings().TILE_SIZE);
+                tile.setNumber(gameBoard.getValueTile(x, y), false);
                 gridPane.add(tile, y, x);
             }
         }
@@ -54,7 +58,7 @@ public class ControllerEndGame implements Initializable {
     }
 
     public void score() {
-        ViewChanger.changeToScore(anchorPane, userState);
+        ViewChanger.changeToScore(anchorPane, userState, currentRecord);
     }
 
     @Override

@@ -33,8 +33,11 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
     private Label levelField;
 
     private UserState userState;
-   // private GameBoard gameBoard;
 
+    /* private GameBoard gameBoard;
+    public void continueGame() {
+         ViewChanger.changeToContinue(anchorPane, userState, gameBoard);
+     }*/
     public void init(UserState userState) {
         this.userState = userState;
         levelField.setText(String.valueOf(userState.getRecord().getLevel()));
@@ -45,9 +48,6 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
         ViewChanger.changeToNewGame(anchorPane, userState);
     }
 
-   /* public void continueGame() {
-        ViewChanger.changeToContinue(anchorPane, userState, gameBoard);
-    }*/
 
     public void settings() {
         ViewChanger.changeToSettings(anchorPane, userState);
@@ -70,9 +70,10 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new FadeIn(anchorPane).play();
-        newGame.setOnMouseEntered(event -> new Pulse(newGame).play());
-        settings.setOnMouseEntered(event -> new Tada(settings).play());
-        score.setOnMouseEntered(event -> new Wobble(score).play());
+        newGame.setOnMouseEntered(event -> new Pulse(newGame).setSpeed(1.5).play());
+        settings.setOnMouseEntered(event -> new Pulse(settings).setSpeed(1.5).play());
+        score.setOnMouseEntered(event -> new Pulse(score).setSpeed(1.5).play());
+        language.setOnMouseEntered(event -> new Pulse(language).setSpeed(1.5).play());
 
     }
 }

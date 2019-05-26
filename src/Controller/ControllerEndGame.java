@@ -4,9 +4,11 @@ package Controller;
 import Model.*;
 import Views.Tile;
 import animatefx.animation.FadeIn;
+import animatefx.animation.Pulse;
 import io.Serializer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -23,6 +25,12 @@ public class ControllerEndGame implements Initializable {
     private Label labelScore;
     @FXML
     private GridPane gridPane;
+    @FXML
+    private Button mainMenu;
+    @FXML
+    private Button score;
+    @FXML
+    private Button restart;
 
     private UserState userState;
     private Integer currentRecord;
@@ -64,6 +72,9 @@ public class ControllerEndGame implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new FadeIn(anchorPane).play();
+        mainMenu.setOnMouseEntered(event -> new Pulse(mainMenu).play());
+        restart.setOnMouseEntered(event -> new Pulse(restart).play());
+        score.setOnMouseEntered(event -> new Pulse(score).play());
     }
 }
 

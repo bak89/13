@@ -2,6 +2,7 @@ package Controller;
 
 import Model.*;
 import animatefx.animation.FadeIn;
+import animatefx.animation.Pulse;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -50,6 +51,9 @@ public class ControllerPause implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new FadeIn(anchorPane).play();
+        continueB.setOnMouseEntered(event -> new Pulse(continueB).play());
+        restart.setOnMouseEntered(event -> new Pulse(restart).play());
+        mainMenu.setOnMouseEntered(event -> new Pulse(mainMenu).play());
     }
 }
 

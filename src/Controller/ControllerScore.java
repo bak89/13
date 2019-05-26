@@ -3,9 +3,11 @@ package Controller;
 import Model.Score;
 import Model.UserState;
 import animatefx.animation.FadeIn;
+import animatefx.animation.Pulse;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
@@ -18,6 +20,8 @@ public class ControllerScore implements Initializable {
     public AnchorPane anchorPane;
     @FXML
     private ListView<Score> textArea;
+    @FXML
+    private Button mainMenu;
 
     private UserState userState;
 
@@ -37,6 +41,7 @@ public class ControllerScore implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new FadeIn(anchorPane).play();
+        mainMenu.setOnMouseEntered(event -> new Pulse(mainMenu).play());
     }
 }
 

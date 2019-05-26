@@ -7,6 +7,11 @@ public class Location {
     private int x;
     private int y;
 
+    public Location(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -19,11 +24,6 @@ public class Location {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
-    }
-
-    public Location(int x, int y) {
-        this.x = x;
-        this.y = y;
     }
 
     public int getX() {

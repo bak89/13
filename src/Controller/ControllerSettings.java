@@ -3,9 +3,11 @@ package Controller;
 import Model.Settings;
 import Model.UserState;
 import animatefx.animation.FadeIn;
+import animatefx.animation.Pulse;
 import io.Serializer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
 
@@ -23,6 +25,8 @@ public class ControllerSettings implements Initializable {
     private Slider changeColumn;
     @FXML
     private Slider changeTile;
+    @FXML
+    private Button mainMenu;
 
     private UserState userState;
 
@@ -51,6 +55,7 @@ public class ControllerSettings implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new FadeIn(anchorPane).play();
+        mainMenu.setOnMouseEntered(event -> new Pulse(mainMenu).play());
     }
 }
 

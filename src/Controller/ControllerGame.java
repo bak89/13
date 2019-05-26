@@ -29,11 +29,14 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
     @FXML
     private Button undo;
     @FXML
+    private Button pause;
+    @FXML
     private GridPane gridPane;
     @FXML
     private Label moneyField;
     @FXML
     private Label levelField;
+
 
     private UserState userState;
     private GameBoard gameBoard;
@@ -156,5 +159,8 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new FadeIn(anchorPane).play();
+        pause.setOnMouseEntered(event -> new Pulse(pause).play());
+        bomb.setOnMouseEntered(event -> new Pulse(bomb).play());
+        undo.setOnMouseEntered(event -> new Pulse(undo).play());
     }
 }

@@ -4,7 +4,7 @@ package Model;
 public class Score implements Comparable<Score> {
 
     private int level;
-    private int moves;
+    private long moves;
 
     /**
      * Creates an empty Score instance.
@@ -17,16 +17,16 @@ public class Score implements Comparable<Score> {
     /**
      * Creates a Score instance.
      */
-    public Score(int level, int moves) {
+    public Score(int level, long moves) {
         this.moves = moves;
         this.level = level;
     }
 
-    public int getMoves() {
+    public long getMoves() {
         return moves;
     }
 
-    public void setMoves(int moves) {
+    public void setMoves(long moves) {
         this.moves = moves;
     }
 
@@ -46,7 +46,8 @@ public class Score implements Comparable<Score> {
     @Override
     public int compareTo(Score o) {
         if (level == o.level) {
-            return moves - o.moves;
+            if (moves == o.moves) return 0;
+            return moves < o.moves ? -1 : 1;
         }
         return level - o.level;
     }

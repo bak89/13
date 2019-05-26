@@ -130,8 +130,8 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                 break;
             case "Money Change":
                 moneyField.setText(String.valueOf(evt.getNewValue()));
-                bomb.setDisable((Integer) evt.getNewValue() < bank.getBombCost());
-                undo.setDisable((Integer) evt.getNewValue() < bank.getUndoCost());
+                bomb.setDisable((long) evt.getNewValue() < bank.getBombCost());
+                undo.setDisable((long) evt.getNewValue() < bank.getUndoCost());
                 break;
             case "Bomb Cost Change":
                 bomb.setDisable(bank.getMoney() < (Integer) evt.getNewValue());

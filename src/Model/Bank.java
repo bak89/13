@@ -5,7 +5,7 @@ import java.beans.PropertyChangeSupport;
 
 public class Bank {
 
-    private int money = 0;
+    private long money = 0;
     private int bombCost = 50;
     private int undoCost = 20;
 
@@ -15,18 +15,18 @@ public class Bank {
 
     }
 
-    public Bank(int money) {
+    public Bank(long money) {
         this.money = money;
     }
 
-    public int getMoney() {
+    public long getMoney() {
         return money;
     }
 
-    private void setMoney(int money) {
+    private void setMoney(long money) {
         if (money == this.money) return;
 
-        int oldMoney = this.money;
+        long oldMoney = this.money;
         this.money = money;
         support.firePropertyChange("Money Change", oldMoney, money);
     }

@@ -3,8 +3,7 @@ package Controller;
 import Model.Settings;
 import Model.UserState;
 import animatefx.animation.FadeIn;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -12,22 +11,14 @@ import javafx.scene.layout.AnchorPane;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.net.MalformedURLException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerSettings implements PropertyChangeListener, Initializable {
+public class ControllerSettings implements Initializable {
 
     @FXML
     public AnchorPane anchorPane;
-    @FXML
-    private Button mainMenu;
-    @FXML
-    private Label labelSettings;
-    @FXML
-    private MenuButton gridSize;
-    @FXML
-    private Button apply;
     @FXML
     private Slider changeRow;
     @FXML
@@ -36,34 +27,22 @@ public class ControllerSettings implements PropertyChangeListener, Initializable
     private Slider changeTile;
 
     private UserState userState;
-    private Settings settings;
 
     public void mainMenu() {
         ViewChanger.changeToMainMenu(anchorPane, userState);
     }
 
-    public void changeRow(){
-/*
-        changeRow.valueProperty().addListener((observable, oldValue, newValue) -> );
-
-       /* changeColumn.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                changeColumn.setValue(Settings.HEIGHT);
-            }
-        });*/
-    }
-
-    public void changeColumn(){
-      //  changeColumn.valueProperty().addListener((observable, oldValue, newValue) -> );
-    }
-
-    public void changeTile(){
-      //  changeTile.valueProperty().addListener((observable, oldValue, newValue) -> );
-    }
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-
+    public void init(UserState userState) {
+        this.userState = userState;
+        changeRow.setValue(Settings.HEIGHT);
+        changeRow.valueProperty().addListener((observable, oldValue, newValue) ->
+                Settings.HEIGHT = newValue.intValue());
+        changeColumn.setValue(Settings.WIDTH);
+        changeColumn.valueProperty().addListener((observable, oldValue, newValue) ->
+                Settings.WIDTH = newValue.intValue());
+        changeTile.setValue(Settings.TILE_SIZE);
+        changeTile.valueProperty().addListener((observable, oldValue, newValue) ->
+                Settings.TILE_SIZE = newValue.intValue());
     }
 
     @Override

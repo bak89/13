@@ -35,15 +35,15 @@
               <items>
                 <MenuItem fx:id="mr" mnemonicParsing="false" text="Row">
                      <graphic>
-                        <Slider fx:id="changeRow" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" min="3.0" minorTickCount="10" onDragDetected="#changeRow" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                        <Slider fx:id="changeRow" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" min="3.0" minorTickCount="10" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
                      </graphic></MenuItem>
                 <MenuItem fx:id="mc" mnemonicParsing="false" text="Column">
                      <graphic>
-                        <Slider fx:id="changeColumn" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" min="3.0" minorTickCount="10" onDragDetected="#changeColumn" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                        <Slider fx:id="changeColumn" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" min="3.0" minorTickCount="10" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
                      </graphic></MenuItem>
                   <MenuItem fx:id="mt" mnemonicParsing="false" text="Tile">
                      <graphic>
-                        <Slider fx:id="changeTile" blockIncrement="1.0" majorTickUnit="10.0" min="10.0" minorTickCount="10" onDragDetected="#changeTile" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                        <Slider fx:id="changeTile" blockIncrement="1.0" majorTickUnit="10.0" min="10.0" minorTickCount="10" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
                      </graphic>
                   </MenuItem>
               </items>
@@ -61,18 +61,6 @@
                   </ImageView>
                </graphic>
             </MenuButton>
-            <Button fx:id="apply" contentDisplay="TOP" mnemonicParsing="false" text="Apply">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@icon/icons8_ok_100px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button fx:id="mainMenu" contentDisplay="TOP" mnemonicParsing="false" onAction="#mainMenu" text="Main Menu">
                <VBox.margin>
                   <Insets top="20.0" />

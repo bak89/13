@@ -5,8 +5,7 @@ import Model.GameBoard;
 import Model.Settings;
 import Model.UserState;
 import Views.Tile;
-import animatefx.animation.FadeIn;
-import animatefx.animation.GlowText;
+import animatefx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,11 +76,17 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                 final int y1 = y;
                 tile.setOnAction(event -> {
                     if (bomb.isSelected()) {
-                        gameBoard.bombTile(x1, y1);
-                        bank.useBomb();
+                        AnimationFX a = new BounceOutDown(tile);
+                        a.setOnFinished(e -> {
+                            gameBoard.bombTile(x1, y1);
+                            bank.useBomb();
+                            new BounceInUp(tile).play();
+                        });
+                        a.play();
                         bomb.setSelected(false);
                     } else {
                         if (!gameBoard.isClickable(x1, y1)) {
+                            new Wobble(tile).play();
                             return;
                         }
                         bank.addMove();
@@ -109,10 +114,6 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch (evt.getPropertyName()) {
-            case "Continue":
-                gridPane.getChildren().addAll((Group) evt.getOldValue());
-                break;
-
             case "Fall":
                 //salvare copia board
                 //in init inizializzare undo con stato board
@@ -121,17 +122,15 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                 if ((Integer) evt.getNewValue() > (Integer) evt.getOldValue()) {
                     bank.addInterest();
                 }
-                //      userState.updateRecord((Integer) evt.getNewValue(), bank.getMoney());
+                //
                 levelField.setText(String.valueOf(evt.getNewValue()));
                 new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("green")).play();//soldi verde
                 new GlowText(levelField, Paint.valueOf("white"), Paint.valueOf("green")).play();//livello verde
                 break;
-
             case "Money Change":
                 moneyField.setText(String.valueOf(evt.getNewValue()));
                 bomb.setDisable((Integer) evt.getNewValue() < bank.getBombCost());
                 undo.setDisable((Integer) evt.getNewValue() < bank.getUndoCost());
-
                 break;
             case "Bomb Cost Change":
                 bomb.setDisable(bank.getMoney() < (Integer) evt.getNewValue());
@@ -144,13 +143,7 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                 break;
 
             case "Game Over":
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/ly4.fxml"));
-                    AnchorPane pane = loader.load();
-                    anchorPane.getScene().setRoot(pane);
-                } catch (IOException e) {
-                    System.out.println("Error");
-                }
+                ViewChanger.changeToGameOver(anchorPane, userState, gameBoard, bank);
                 break;
 
             default:

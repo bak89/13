@@ -65,6 +65,7 @@ public class ViewChanger {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly5.fxml"));
             AnchorPane pane = loader.load();
             root.getScene().setRoot(pane);
+            loader.<ControllerScore>getController().init(userState);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,9 +76,20 @@ public class ViewChanger {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly6.fxml"));
             Parent pane = loader.load();
             root.getScene().setRoot(pane);
-            // loader.<ControllerSettings>getController().init(userState);
+            loader.<ControllerSettings>getController().init(userState);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void changeToGameOver(AnchorPane root, UserState userState, GameBoard gameBoard, Bank bank) {
+        try {
+            FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly4.fxml"));
+            AnchorPane pane = loader.load();
+            root.getScene().setRoot(pane);
+            loader.<ControllerEndGame>getController().init(userState, gameBoard, bank);
+        } catch (IOException e) {
+            System.out.println("Error");
         }
     }
 }

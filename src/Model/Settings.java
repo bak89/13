@@ -6,16 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Settings {
-    public static final int TILE_SIZE = 60;
-    public static final int WIDTH = 5;
-    public static final int HEIGHT = 5;
-
     public static final int DEFAULT_LEVEL = 6;
     public static final int LEVEL_RANGE = 7;
-
     public static final double PROBABILITY = 0.4;
-
-
     public static final Map<Integer, Color> BLOCK_COLORS = new HashMap<>() {{
         put(0, Color.rgb(252, 252, 252));
         put(1, Color.rgb(230, 194, 74));
@@ -33,12 +26,16 @@ public class Settings {
         put(13, Color.rgb(200, 200, 200));
         put(14, Color.rgb(134, 134, 134));
         put(15, Color.rgb(79, 79, 79));
-        put(16,Color.rgb(90,79,98));
-        put(17,Color.rgb(110,79,98));
-        put(18,Color.rgb(120,79,98));
-        put(19,Color.rgb(150,79,98));
-        put(20,Color.rgb(190,79,98));
-        put(21,Color.rgb(156,56,98));
+        put(16, Color.rgb(90, 79, 98));
+        put(17, Color.rgb(110, 79, 98));
+        put(18, Color.rgb(120, 79, 98));
+        put(19, Color.rgb(150, 79, 98));
+        put(20, Color.rgb(190, 79, 98));
+        put(21, Color.rgb(156, 56, 98));
 
     }};
+
+    public static int TILE_SIZE = 60;
+    public static int WIDTH = 5;
+    public static int HEIGHT = 5;
 }

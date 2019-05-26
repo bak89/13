@@ -1,4 +1,6 @@
 import Controller.ControllerMenu;
+import Model.Bank;
+import Model.Settings;
 import Model.UserState;
 import animatefx.animation.FadeIn;
 import javafx.application.Application;
@@ -15,7 +17,7 @@ public class Main extends Application {
         //aggiunta lingua
         // ResourceBundle bundle = ResourceBundle.getBundle("easter.example", new Locale("de", "DE"));
 
-        UserState userState = new UserState(6, 1);
+        UserState userState = new UserState(Settings.DEFAULT_LEVEL, 1000);
 
         // Parent root = FXMLLoader.load(getClass().getResource("Views/ly1.fxml"));
 

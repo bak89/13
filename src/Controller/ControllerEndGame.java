@@ -1,15 +1,19 @@
 package Controller;
 
 
+import Model.Bank;
 import Model.GameBoard;
+import Model.Settings;
 import Model.UserState;
-import animatefx.animation.FadeIn;
+import Views.Tile;
+import animatefx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -29,9 +33,27 @@ public class ControllerEndGame implements PropertyChangeListener, Initializable 
     private Button mainMenu;
     @FXML
     private Label labelScore;
+    @FXML
+    private GridPane gridPane;
 
     private UserState userState;
     private GameBoard gameBoard;
+    private Bank bank;
+
+    public void init(UserState userState, GameBoard gameBoard, Bank bank) {
+        this.userState = userState;
+        this.gameBoard = gameBoard;
+        labelScore.setText(String.valueOf(gameBoard.getLevel()));
+        userState.updateRecord(gameBoard.getLevel(), bank.getMoney());
+
+        for (int x = 0; x < Settings.HEIGHT; x++) {
+            for (int y = 0; y < Settings.WIDTH; y++) {
+                Tile tile = new Tile();
+                tile.setNumber(gameBoard.getValueTile(x, y));
+                gridPane.add(tile, y, x);
+            }
+        }
+    }
 
     public void restart() {
         ViewChanger.changeToNewGame(anchorPane, userState);

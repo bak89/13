@@ -1,10 +1,7 @@
 package Controller;
 
 import Model.*;
-import animatefx.animation.BounceInLeft;
-import animatefx.animation.FadeIn;
-import animatefx.animation.Flash;
-import animatefx.animation.LightSpeedIn;
+import animatefx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,11 +37,12 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
 
     public void init(UserState userState) {
         this.userState = userState;
+        levelField.setText(String.valueOf(userState.getRecordLevel()));
+        moneyField.setText(String.valueOf(userState.getRecordMoney()));
     }
 
     public void newGame() {
         ViewChanger.changeToNewGame(anchorPane, userState);
-
     }
 
    /* public void continueGame() {
@@ -72,10 +70,9 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new FadeIn(anchorPane).play();
-      /*  newGame.setOnAction(event -> {
-            new BounceInLeft(newGame).play();
-
-        });*/
+        newGame.setOnMouseEntered(event -> new Pulse(newGame).play());
+        settings.setOnMouseEntered(event -> new Tada(settings).play());
+        score.setOnMouseEntered(event -> new Wobble(score).play());
 
     }
 }

@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controllerback implements PropertyChangeListener, Initializable {
+public class ControllerScore implements PropertyChangeListener, Initializable {
 
     @FXML
     public AnchorPane anchorPane;
@@ -22,6 +22,9 @@ public class Controllerback implements PropertyChangeListener, Initializable {
     private Button mainMenu;
     private UserState userState;
 
+    public void init(UserState userState){
+        this.userState = userState;
+    }
     public void mainMenu() {
         ViewChanger.changeToMainMenu(anchorPane, userState);
     }

@@ -84,6 +84,7 @@ public class GameBoard {
         //   return gridArray.stream().map(Collections::max).max(Comparator.naturalOrder()).get();
         int max = Integer.MIN_VALUE;
         for (ArrayList<Integer> forColumn : getGridArray()) {
+            if (forColumn.isEmpty()) continue;
             max = Math.max(Collections.max(forColumn), max);
         }
         return max;
@@ -92,6 +93,7 @@ public class GameBoard {
     public Integer getValueMin() {
         int min = Integer.MAX_VALUE;
         for (ArrayList<Integer> forColumn : getGridArray()) {
+            if (forColumn.isEmpty()) continue;
             min = Math.min(Collections.min(forColumn), min);//problema min null exc
         }
         return min;

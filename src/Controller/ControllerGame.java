@@ -54,6 +54,8 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
         });
         bomb.setDisable(bank.getMoney() < bank.getBombCost());
         levelField.setText(String.valueOf(gameBoard.getLevel()));
+        bomb.setText(String.valueOf(bank.getBombCost()));
+        undo.setText(String.valueOf(bank.getUndoCost()));
 
         bank.addPropertyChangeListener(this);
         gameBoard.addPropertyChangeListener(this);
@@ -63,6 +65,7 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
             if (gameBoard.canUndo()) {
                 gameBoard.doUndo();
                 bank.useUndo();
+                undo.setText(String.valueOf(bank.getUndoCost()));
             } else {
                 undo.setText("Sei povero");
 
@@ -81,6 +84,7 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                         a.setOnFinished(e -> {
                             gameBoard.bombTile(x1, y1);
                             bank.useBomb();
+                            bomb.setText(String.valueOf(bank.getBombCost()));
                         });
                         a.setResetOnFinished(true).setSpeed(2.5).play();
                         bomb.setSelected(false);

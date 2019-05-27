@@ -39,11 +39,15 @@
 #bomb {
     -fx-background-color: #feec00;
     -fx-background-radius: 90;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
 }
 
 #undo {
     -fx-background-color: #1b90b8;
     -fx-background-radius: 45;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
 }
 
 #continueB {
@@ -128,6 +132,7 @@
     -fx-font-weight: bold;
 }
 #labelScore {
-    -fx-font-size: 13;
+    -fx-font-size: 18;
     -fx-font-weight: bold;
 }
+

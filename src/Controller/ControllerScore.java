@@ -25,7 +25,7 @@ public class ControllerScore implements Initializable {
 
     private UserState userState;
 
-    public void init(UserState userState, Integer currentRecord) {
+    void init(UserState userState, Integer currentRecord) {
         this.userState = userState;
 
         textArea.setItems(FXCollections.observableArrayList(userState.getRecords()));

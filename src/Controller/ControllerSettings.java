@@ -39,7 +39,7 @@ public class ControllerSettings implements Initializable {
         ViewChanger.changeToMainMenu(anchorPane, userState);
     }
 
-    public void init(UserState userState) {
+    void init(UserState userState) {
         this.userState = userState;
         changeRow.setValue(userState.getSettings().HEIGHT);
         changeRow.valueProperty().addListener((observable, oldValue, newValue) ->

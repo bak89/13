@@ -12,13 +12,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Paint;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 
 public class ControllerGame implements PropertyChangeListener, Initializable {
 
@@ -36,7 +38,6 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
     private Label moneyField;
     @FXML
     private Label levelField;
-
 
     private UserState userState;
     private GameBoard gameBoard;
@@ -67,8 +68,7 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                 bank.useUndo();
                 undo.setText(String.valueOf(bank.getUndoCost()));
             } else {
-                undo.setText("Sei povero");
-
+                undo.setText("You are poor");
             }
         });
 
@@ -80,6 +80,10 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                 final int y1 = y;
                 tile.setOnAction(event -> {
                     if (bomb.isSelected()) {
+                        String musicFile = "nani.mp3";
+                        Media naniSound = new Media(new File(musicFile).toURI().toString());
+                        MediaPlayer mediaPlayer = new MediaPlayer(naniSound);
+                        mediaPlayer.play();
                         AnimationFX a = new BounceOut(tile);
                         a.setOnFinished(e -> {
                             gameBoard.bombTile(x1, y1);
@@ -87,23 +91,23 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                             bomb.setText(String.valueOf(bank.getBombCost()));
                         });
                         a.setResetOnFinished(true).setSpeed(2.5).play();
+
                         bomb.setSelected(false);
                     } else {
                         if (!gameBoard.isClickable(x1, y1)) {
                             new Wobble(tile).setSpeed(2).play();
-                           // new Pulse(tile).setSpeed(4).setCycleCount(2).play();
+                            // new Pulse(tile).setSpeed(4).setCycleCount(2).play();
                             return;
                         }
                         bank.addMove();
                         gameBoard.playTile(x1, y1);
+
                     }
                 });
 
                 gameBoard.addPropertyChangeListener(evt -> {
-                            switch (evt.getPropertyName()) {
-                                case "Fall":
-                                    updateTile(tile, x1, y1);
-                                    break;
+                            if ("Fall".equals(evt.getPropertyName())) {
+                                updateTile(tile, x1, y1);
                             }
                         }
                 );
@@ -132,8 +136,8 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                     bank.addInterest();
                 }
                 levelField.setText(String.valueOf(evt.getNewValue()));
-                new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("green")).play();//soldi verde
-                new GlowText(levelField, Paint.valueOf("white"), Paint.valueOf("green")).play();//livello verde
+                new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("green")).play();//money green
+                new GlowText(levelField, Paint.valueOf("white"), Paint.valueOf("green")).play();//level green
                 break;
             case "Money Change":
                 moneyField.setText(String.valueOf(evt.getNewValue()));
@@ -142,12 +146,12 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                 break;
             case "Bomb Cost Change":
                 bomb.setDisable(bank.getMoney() < (Integer) evt.getNewValue());
-                new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("red")).play();//animazione soldi rosso
+                new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("red")).play();//money red
                 break;
 
             case "Undo Cost Change":
                 undo.setDisable(bank.getMoney() < (Integer) evt.getNewValue());
-                new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("red")).play();//animazione soldi rosso
+                new GlowText(moneyField, Paint.valueOf("white"), Paint.valueOf("red")).play();//money red
                 break;
 
             case "Game Over":
@@ -165,6 +169,12 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
         new FadeIn(anchorPane).play();
         pause.setOnMouseEntered(event -> new Pulse(pause).play());
         bomb.setOnMouseEntered(event -> new Pulse(bomb).play());
+       /* bomb.setOnAction(event -> {
+            String musicFile = "shindeiru.mp3";
+            Media shindeiruSound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(shindeiruSound);
+            mediaPlayer.play();
+        });*/
         undo.setOnMouseEntered(event -> new Pulse(undo).play());
     }
 }

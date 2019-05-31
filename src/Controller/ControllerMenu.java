@@ -47,7 +47,6 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
         ViewChanger.changeToNewGame(anchorPane, userState);
     }
 
-
     public void settings() {
         ViewChanger.changeToSettings(anchorPane, userState);
     }

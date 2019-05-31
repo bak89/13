@@ -37,9 +37,10 @@ public class UserState {
     }
 
     public int updateRecord(Score score) {
-        int index = Collections.binarySearch(records, score,Collections.reverseOrder());//indice in cui è inserito lo score nell'array per mantenerlo ordinato
-        if (index < 0) {//se non esiste l'elemento
-            index = -index - 1;//ritorna index(-(insertion point)-1)
+        // index in which the score is inserted in the array to keep it sorted
+        int index = Collections.binarySearch(records, score,Collections.reverseOrder());
+        if (index < 0) {//if the element does not exist
+            index = -index - 1;//return index(-(insertion point)-1)
         }
         records.add(index, score);
         while (records.size() > Settings.MAX_RECORDS) {

@@ -7,22 +7,11 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-
 class ViewChanger {
 
     static void changeToNewGame(AnchorPane root, UserState userState) {
-
-        GameBoard gameBoard = new GameBoard(userState.getSettings().HEIGHT, userState.getSettings().WIDTH, /*new RandomGenerator() {
-            Random random = new Random();
-
-            @Override
-            public int getRandomNumber(int level) {
-
-                return random.nextInt(level-1) + 1;
-            }
-        }*/
+        GameBoard gameBoard = new GameBoard(userState.getSettings().HEIGHT, userState.getSettings().WIDTH,
                 new BinomialGenerator(Settings.LEVEL_RANGE), Settings.DEFAULT_LEVEL);
-
         changeToContinue(root, userState, gameBoard, new Bank(Settings.DEFAULT_MONEY));
 
     }

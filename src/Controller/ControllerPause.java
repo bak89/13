@@ -16,13 +16,10 @@ public class ControllerPause implements Initializable {
 
     @FXML
     public AnchorPane anchorPane;
-
     @FXML
     private Button continueB;
-
     @FXML
     private Button restart;
-
     @FXML
     private Button mainMenu;
 

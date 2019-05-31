@@ -7,11 +7,11 @@ import java.util.Map;
 
 public class Settings {
     public static final String CONFIG_FILE = "config.xml";
-    public static final int MAX_RECORDS = 10;
+    static final int MAX_RECORDS = 10;
     public static final int DEFAULT_LEVEL = 6;
     public static final int DEFAULT_MONEY = 1000;
     public static final int LEVEL_RANGE = 7;
-    public static final double PROBABILITY = 0.4;
+    static final double PROBABILITY = 0.4;
     public static final Map<Integer, Color> BLOCK_COLORS = new HashMap<>() {{
         put(0, Color.rgb(252, 252, 252));
         put(1, Color.rgb(230, 194, 74));
@@ -28,17 +28,17 @@ public class Settings {
         put(12, Color.rgb(197, 238, 240));
         put(13, Color.rgb(200, 200, 200));
         put(14, Color.rgb(134, 134, 134));
-        put(15, Color.rgb(19, 179, 109));
-        put(16, Color.rgb(200, 9, 9));
-        put(17, Color.rgb(110, 179, 98));
-        put(18, Color.rgb(120, 79, 198));
-        put(19, Color.rgb(104, 9, 98));
-        put(20, Color.rgb(19, 189, 248));
+        put(15, Color.rgb(110, 179, 98));
+        put(16, Color.rgb(19, 179, 109));
+        put(17, Color.rgb(23, 116, 60));
+        put(18, Color.rgb(80, 79, 198));
+        put(19, Color.rgb(120, 79, 198));
+        put(20, Color.rgb(144, 9, 98));
         put(21, Color.rgb(156, 56, 98));
 
     }};
 
-    public  int TILE_SIZE = 60;
-    public  int WIDTH = 5;
-    public  int HEIGHT = 5;
+    public int TILE_SIZE = 60;
+    public int WIDTH = 5;
+    public int HEIGHT = 5;
 }

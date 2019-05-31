@@ -10,7 +10,6 @@ import java.io.IOException;
 
 public class Deserializer {
 
-
     public static void main(String[] args) {
         Deserializer read = new Deserializer();
         try {
@@ -23,10 +22,9 @@ public class Deserializer {
         }
     }
 
-    //quando scrivo delelgo la classe di scrivere se stessa
-    //quando leggo devo specificare la classe che si legge da sola
+    // when I write I delegate the class to write itself
+    // when I read I must specify the class that reads itself
     public UserState read(String configFile) throws IOException, JAXBException {
-
         JAXBContext context = JAXBContext.newInstance(UserState.class);
 
         // Output result from XML File

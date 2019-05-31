@@ -1,8 +1,6 @@
 package Model;
 
-
 public class Score implements Comparable<Score> {
-
     private int level;
     private long moves;
 
@@ -10,7 +8,6 @@ public class Score implements Comparable<Score> {
      * Creates an empty Score instance.
      */
     public Score() {
-
         this.level = 0;
     }
 
@@ -40,7 +37,7 @@ public class Score implements Comparable<Score> {
 
     @Override
     public String toString() {
-        return "Level = " + level + ", moves = "+ moves;
+        return "Level = " + level + ", moves = " + moves;
     }
 
     @Override

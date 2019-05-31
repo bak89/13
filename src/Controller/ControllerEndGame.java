@@ -1,6 +1,5 @@
 package Controller;
 
-
 import Model.*;
 import Views.Tile;
 import animatefx.animation.FadeIn;
@@ -34,7 +33,6 @@ public class ControllerEndGame implements Initializable {
 
     private UserState userState;
     private Integer currentRecord;
-
 
     void init(UserState userState, GameBoard gameBoard, Bank bank) {
         this.userState = userState;

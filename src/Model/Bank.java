@@ -63,11 +63,17 @@ public class Bank {
         setMoney(getMoney() * 2);
     }
 
+    /**
+     * Take Money for Bomb cost
+     */
     public void useBomb() {
         setMoney(getMoney() - getBombCost());
         setBombCost(getBombCost() * 2);
     }
 
+    /**
+     * Take Money for Undo cost
+     */
     public void useUndo() {
         setMoney(getMoney() - getUndoCost());
         setUndoCost(getUndoCost() * 2);

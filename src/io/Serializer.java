@@ -8,13 +8,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.File;
 
-
 public class Serializer {
-    /**
-     * Main program.
-     *
-     * @param args unused
-     */
+
     public static void main(String[] args) {
         UserState userState = new UserState(new Score(44, 22));
         try {

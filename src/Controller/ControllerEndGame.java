@@ -36,7 +36,7 @@ public class ControllerEndGame implements Initializable {
     private Integer currentRecord;
 
 
-    public void init(UserState userState, GameBoard gameBoard, Bank bank) {
+    void init(UserState userState, GameBoard gameBoard, Bank bank) {
         this.userState = userState;
 
         labelScore.setText(String.valueOf(gameBoard.getLevel()));

@@ -28,12 +28,12 @@ public class Settings {
         put(12, Color.rgb(197, 238, 240));
         put(13, Color.rgb(200, 200, 200));
         put(14, Color.rgb(134, 134, 134));
-        put(15, Color.rgb(79, 79, 79));
-        put(16, Color.rgb(90, 79, 98));
-        put(17, Color.rgb(110, 79, 98));
-        put(18, Color.rgb(120, 79, 98));
-        put(19, Color.rgb(150, 79, 98));
-        put(20, Color.rgb(190, 79, 98));
+        put(15, Color.rgb(19, 179, 109));
+        put(16, Color.rgb(200, 9, 9));
+        put(17, Color.rgb(110, 179, 98));
+        put(18, Color.rgb(120, 79, 198));
+        put(19, Color.rgb(104, 9, 98));
+        put(20, Color.rgb(19, 189, 248));
         put(21, Color.rgb(156, 56, 98));
 
     }};

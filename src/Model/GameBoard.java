@@ -11,13 +11,7 @@ public class GameBoard {
     private RandomGenerator random;
     private Stack<Vector<ArrayList<Integer>>> undoStack = new Stack<>(); //ho creato uno stack di array di arraylist
 
-    /**
-     * Game board do stuff
-     *
-     * @param row
-     * @param column
-     * @param random
-     */
+
     public GameBoard(int row, int column, RandomGenerator random, int initialLevel) {
         support = new PropertyChangeSupport(this);
         this.row = row;
@@ -33,6 +27,14 @@ public class GameBoard {
         }
     }
 
+    /**
+     *
+     * @param row
+     * @param column
+     * @param random
+     * @param initialLevel
+     * @return
+     */
     private static Vector<ArrayList<Integer>> createNewGrid(int row, int column, RandomGenerator random, int initialLevel) {//questo è il random che poi cambio in generator
         Vector<ArrayList<Integer>> grid = new Vector<>(); //nuovo array di column colonne
         for (int j = 0; j < column; j++) {
@@ -48,10 +50,18 @@ public class GameBoard {
         return grid;
     }
 
+    /**
+     *
+     * @return
+     */
     private Vector<ArrayList<Integer>> getGridArray() {
         return undoStack.peek();
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean canUndo() {
         return undoStack.size() > 1;
     }

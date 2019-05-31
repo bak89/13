@@ -1,8 +1,8 @@
 package Controller;
 
-import Model.*;
-import animatefx.animation.*;
-import javafx.event.ActionEvent;
+import Model.UserState;
+import animatefx.animation.FadeIn;
+import animatefx.animation.Pulse;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,7 +11,6 @@ import javafx.scene.layout.AnchorPane;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -57,9 +56,9 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
         ViewChanger.changeToScore(anchorPane, userState, null);
     }
 
-    public void language(ActionEvent event) throws IOException {
+    /*public void language(ActionEvent event) throws IOException {
 
-    }
+    }*/
 
 
     @Override

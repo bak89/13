@@ -42,7 +42,7 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
     private GameBoard gameBoard;
     private Bank bank;
 
-    public void init(UserState userState, GameBoard gameBoard, Bank bank) {
+    void init(UserState userState, GameBoard gameBoard, Bank bank) {
         this.userState = userState;
         this.gameBoard = gameBoard;
         this.bank = bank;
@@ -90,8 +90,8 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                         bomb.setSelected(false);
                     } else {
                         if (!gameBoard.isClickable(x1, y1)) {
-                            //new Wobble(tile).play();
-                            new Pulse(tile).setSpeed(4).setCycleCount(2).play();
+                            new Wobble(tile).setSpeed(2).play();
+                           // new Pulse(tile).setSpeed(4).setCycleCount(2).play();
                             return;
                         }
                         bank.addMove();

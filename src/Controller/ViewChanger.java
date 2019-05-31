@@ -8,9 +8,9 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 
-public class ViewChanger {
+class ViewChanger {
 
-    public static void changeToNewGame(AnchorPane root, UserState userState) {
+    static void changeToNewGame(AnchorPane root, UserState userState) {
 
         GameBoard gameBoard = new GameBoard(userState.getSettings().HEIGHT, userState.getSettings().WIDTH, /*new RandomGenerator() {
             Random random = new Random();
@@ -27,7 +27,7 @@ public class ViewChanger {
 
     }
 
-    public static void changeToMainMenu(AnchorPane root, UserState userState) {
+    static void changeToMainMenu(AnchorPane root, UserState userState) {
         try {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly1.fxml"));
             Parent mainMenu = loader.load();
@@ -38,7 +38,7 @@ public class ViewChanger {
         }
     }
 
-    public static void changeToContinue(AnchorPane root, UserState userState, GameBoard gameBoard, Bank bank) {
+    static void changeToContinue(AnchorPane root, UserState userState, GameBoard gameBoard, Bank bank) {
         try {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly2.fxml"));
             AnchorPane pane = loader.load();
@@ -49,7 +49,7 @@ public class ViewChanger {
         }
     }
 
-    public static void changeToPause(AnchorPane root, UserState userState, GameBoard gameBoard, Bank bank) {
+    static void changeToPause(AnchorPane root, UserState userState, GameBoard gameBoard, Bank bank) {
         try {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly3.fxml"));
             AnchorPane pane = loader.load();
@@ -60,7 +60,7 @@ public class ViewChanger {
         }
     }
 
-    public static void changeToScore(AnchorPane root, UserState userState, Integer currentRecord) {
+    static void changeToScore(AnchorPane root, UserState userState, Integer currentRecord) {
         try {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly5.fxml"));
             AnchorPane pane = loader.load();
@@ -71,7 +71,7 @@ public class ViewChanger {
         }
     }
 
-    public static void changeToSettings(AnchorPane root, UserState userState) {
+    static void changeToSettings(AnchorPane root, UserState userState) {
         try {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly6.fxml"));
             Parent pane = loader.load();
@@ -82,7 +82,7 @@ public class ViewChanger {
         }
     }
 
-    public static void changeToGameOver(AnchorPane root, UserState userState, GameBoard gameBoard, Bank bank) {
+    static void changeToGameOver(AnchorPane root, UserState userState, GameBoard gameBoard, Bank bank) {
         try {
             FXMLLoader loader = new FXMLLoader(ViewChanger.class.getResource("../Views/ly4.fxml"));
             AnchorPane pane = loader.load();

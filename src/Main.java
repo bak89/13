@@ -21,8 +21,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //aggiunta lingua
-        // ResourceBundle bundle = ResourceBundle.getBundle("easter.example", new Locale("de", "DE"));
+      /*  //aggiunta lingua
+        Locale current = Locale.getDefault();
+        ResourceBundle languages = ResourceBundle.getBundle("languages", new Locale("en", "EN"));
+        languages.getLocale();*/
 
         UserState userState;
         try {

@@ -48,6 +48,9 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
         this.userState = userState;
         this.gameBoard = gameBoard;
         this.bank = bank;
+        if (!gameBoard.isClickable()) {
+            ViewChanger.changeToGameOver(anchorPane, userState, gameBoard, bank);
+        }
         moneyField.setText(String.valueOf(bank.getMoney()));
 
         bomb.setDisable(bank.getMoney() < bank.getBombCost());

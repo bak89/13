@@ -191,14 +191,14 @@ public class GameBoard {
     }
 
     /**
-     * Check if tile is clickable and tell where in grid (For CONSOLE)
+     * Check if tile is clickable and tell where in grid for gameOver
      *
      * @return if is clickable or not
      */
     public boolean isClickable() {
         /*for (int x = 0; x < row; x++) {
             for (int y = 0; y < column; y++) {
-                if (!getNeighborTiles(x, y, new ArrayList<>()).isEmpty()) {
+                if (!isClickable(x,y)) {
                     return true;
                 }
             }
@@ -228,7 +228,7 @@ public class GameBoard {
     }
 
     /**
-     * Check if tile is clickable and tell where in grid
+     * Check if tile is clickable in grid
      *
      * @param x : row
      * @param y : column

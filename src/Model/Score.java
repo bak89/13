@@ -23,6 +23,7 @@ public class Score implements Comparable<Score> {
         return moves;
     }
 
+    @SuppressWarnings("unused")
     public void setMoves(long moves) {
         this.moves = moves;
     }
@@ -31,6 +32,7 @@ public class Score implements Comparable<Score> {
         return level;
     }
 
+    @SuppressWarnings("unused")
     public void setLevel(int level) {
         this.level = level;
     }

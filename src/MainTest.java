@@ -13,7 +13,10 @@ public class MainTest {
         Ai ai = new Ai(gameBoard, settings);
         while (gameBoard.isClickable()) {
             Location move = ai.getNextMove();
-            gameBoard.playTile(move.getX(), move.getY());
+            if (gameBoard.isClickable(move.getX(), move.getY())) {
+                gameBoard.playTile(move.getX(), move.getY());
+            }
+            System.out.println(gameBoard.getLevel());
         }
 
 

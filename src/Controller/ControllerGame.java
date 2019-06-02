@@ -49,11 +49,7 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
         this.gameBoard = gameBoard;
         this.bank = bank;
         moneyField.setText(String.valueOf(bank.getMoney()));
-        bomb.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            double scale = newValue ? 1.1 : 1.0;
-            bomb.setScaleX(scale);
-            bomb.setScaleY(scale);
-        });
+
         bomb.setDisable(bank.getMoney() < bank.getBombCost());
         levelField.setText(String.valueOf(gameBoard.getLevel()));
         bomb.setText(String.valueOf(bank.getBombCost()));
@@ -168,11 +164,16 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
         new FadeIn(anchorPane).play();
         pause.setOnMouseEntered(event -> new Pulse(pause).play());
         bomb.setOnMouseEntered(event -> new Pulse(bomb).play());
-        bomb.setOnAction(event -> {
-            String musicFile = "shindeiru.mp3";
-            Media shindeiruSound = new Media(new File(musicFile).toURI().toString());
-            mediaPlayer = new MediaPlayer(shindeiruSound);
-            mediaPlayer.play();
+        bomb.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                String musicFile = "shindeiru.mp3";
+                Media shindeiruSound = new Media(new File(musicFile).toURI().toString());
+                mediaPlayer = new MediaPlayer(shindeiruSound);
+                mediaPlayer.play();
+            }
+            double scale = newValue ? 1.1 : 1.0;
+            bomb.setScaleX(scale);
+            bomb.setScaleY(scale);
         });
         undo.setOnMouseEntered(event -> new Pulse(undo).play());
     }

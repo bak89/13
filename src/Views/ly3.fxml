@@ -7,56 +7,65 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../Design.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerPause">
-   <children>
-      <VBox alignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-         <children>
-            <Button fx:id="continueB" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#continueB" prefHeight="80.0" prefWidth="150.0" stylesheets="@../Design.css" text="Continue">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@icon/icons8_circled_chevron_right_100px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="restart" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#restart" prefHeight="80.0" prefWidth="150.0" stylesheets="@../Design.css" text="Restart">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@icon/icons8_restart_100px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="mainMenu" alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#mainMenu" prefHeight="80.0" prefWidth="150.0" stylesheets="@../Design.css" text="Main Menu">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@icon/icons8_menu_2_100px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            stylesheets="@../Design.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.ControllerPause">
+    <children>
+        <VBox alignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"
+              AnchorPane.topAnchor="5.0">
+            <children>
+                <Button fx:id="continueB" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false"
+                        onAction="#continueB" prefHeight="80.0" prefWidth="150.0" stylesheets="@../Design.css"
+                        text="Continue">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets bottom="10.0"/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="@icon/icons8_circled_chevron_right_100px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="restart" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false"
+                        onAction="#restart" prefHeight="80.0" prefWidth="150.0" stylesheets="@../Design.css"
+                        text="Restart">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="10.0"/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="@icon/icons8_restart_100px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="mainMenu" alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity"
+                        maxWidth="-Infinity" mnemonicParsing="false" onAction="#mainMenu" prefHeight="80.0"
+                        prefWidth="150.0" stylesheets="@../Design.css" text="Main Menu">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="@icon/icons8_menu_2_100px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

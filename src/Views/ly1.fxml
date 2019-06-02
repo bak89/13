@@ -11,99 +11,86 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="anchorPane" stylesheets="@../Design.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMenu">
-   <children>
-      <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-         <children>
-            <ImageView fitHeight="200.0" fitWidth="200.0">
-               <image>
-                  <Image url="@icon/air.com.thumbspire.get13.png" />
-               </image>
-            </ImageView>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0">
-                     <image>
-                        <Image url="@icon/icons8_money_100px_1.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="moneyField" text="moneyField" textFill="WHITE" />
-                 <!-- <Icon content="HELP_OUTLINE" /> -->
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <ImageView fitHeight="50.0" fitWidth="50.0">
-                     <image>
-                        <Image url="@icon/icons8_star_100px_1.png" />
-                     </image>
-                  </ImageView>
-                <!--  <Icon content="HELP_OUTLINE" /> -->
-                  <Label fx:id="levelField" text="levelField" textFill="WHITE" />
-               </children>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-            </HBox>
-            <Button fx:id="newGame" alignment="CENTER" mnemonicParsing="false" onAction="#newGame" prefHeight="80.0" prefWidth="200.0" stylesheets="@../Design.css">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView fitHeight="100.0" fitWidth="100.0">
-                     <image>
-                        <Image url="@icon/icons8_play_100px_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <effect>
-                  <Blend />
-               </effect>
-            </Button>
-            <Button fx:id="settings" alignment="CENTER" layoutX="103.0" layoutY="330.0" mnemonicParsing="false" onAction="#settings" prefHeight="80.0" prefWidth="200.0" stylesheets="@../Design.css">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <graphic>
-                  <ImageView fitHeight="100.0" fitWidth="100.0">
-                     <image>
-                        <Image url="@icon/icons8_settings_100px_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="score" alignment="CENTER" mnemonicParsing="false" onAction="#score" prefHeight="80.0" prefWidth="80.0" stylesheets="@../Design.css">
-                     <opaqueInsets>
+<AnchorPane fx:id="anchorPane" stylesheets="@../Design.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMenu">
+    <children>
+        <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <children>
+                <ImageView fitHeight="200.0" fitWidth="200.0">
+                    <image>
+                        <Image url="@icon/air.com.thumbspire.get13.png" />
+                    </image>
+                </ImageView>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0">
+                            <image>
+                                <Image url="@icon/icons8_money_100px_1.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="moneyField" text="moneyField" textFill="WHITE" />
+                        <!-- <Icon content="HELP_OUTLINE" /> -->
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <ImageView fitHeight="50.0" fitWidth="50.0">
+                            <image>
+                                <Image url="@icon/icons8_star_100px_1.png" />
+                            </image>
+                        </ImageView>
+                        <!--  <Icon content="HELP_OUTLINE" /> -->
+                        <Label fx:id="levelField" text="levelField" textFill="WHITE" />
+                    </children>
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </HBox>
+                <Button fx:id="newGame" alignment="CENTER" mnemonicParsing="false" onAction="#newGame" prefHeight="80.0" prefWidth="200.0" stylesheets="@../Design.css">
+                    <opaqueInsets>
                         <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0">
-                           <image>
-                              <Image url="@icon/icons8_winner_document_100px.png" />
-                           </image>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0">
+                            <image>
+                                <Image url="@icon/icons8_play_100px_1.png" />
+                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="language" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" stylesheets="@../Design.css">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0">
-                           <image>
-                              <Image url="@icon/icons8_language_100px.png" />
-                           </image>
+                    </graphic>
+                    <effect>
+                        <Blend />
+                    </effect>
+                </Button>
+                <Button fx:id="settings" alignment="CENTER" layoutX="103.0" layoutY="330.0" mnemonicParsing="false" onAction="#settings" prefHeight="80.0" prefWidth="200.0" stylesheets="@../Design.css">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0">
+                            <image>
+                                <Image url="@icon/icons8_settings_100px_1.png" />
+                            </image>
                         </ImageView>
-                     </graphic>
+                    </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+                </Button>
+                  <Button fx:id="score" alignment="CENTER" mnemonicParsing="false" onAction="#score" prefHeight="80.0" prefWidth="200.0" stylesheets="@../Design.css">
+                      <opaqueInsets>
+                          <Insets />
+                      </opaqueInsets>
+                      <graphic>
+                          <ImageView fitHeight="100.0" fitWidth="100.0">
+                              <image>
+                                  <Image url="@icon/icons8_winner_document_100px.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
                   </Button>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

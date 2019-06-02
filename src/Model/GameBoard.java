@@ -44,7 +44,6 @@ public class GameBoard {
      * @return new grid
      */
     private static Vector<ArrayList<Integer>> createNewGrid(int row, int column, RandomGenerator random, int initialLevel) {//questo è il random che poi cambio in generator
-
         //new Vector of column, for column add an ArrayList
         Vector<ArrayList<Integer>> grid = new Vector<>();
         for (int j = 0; j < column; j++) {
@@ -130,7 +129,7 @@ public class GameBoard {
      *
      * @return min
      */
-    public Integer getValueMin() {
+    private Integer getValueMin() {
         int min = Integer.MAX_VALUE;
         for (ArrayList<Integer> forColumn : getGridArray()) {
             if (forColumn.isEmpty()) continue;
@@ -284,8 +283,8 @@ public class GameBoard {
         System.out.println("row= " + x + " column= " + y);
 
         ArrayList<Location> neighbors = getNeighborTiles(x, y, new ArrayList<>());
-        //set null to create the holes
-        for (Location tile : neighbors) {
+        //print x and y
+        for (Location ignored : neighbors) {
             System.out.println("row= " + x + " column= " + y);
         }
 
@@ -338,7 +337,7 @@ public class GameBoard {
         support.firePropertyChange("Fall", null, null);
 
         if (!isClickable()) {//if isn't clickable = game over
-            support.firePropertyChange("Game Over", false, true);
+            support.firePropertyChange("Game Over", true, false);//test true false invertiti
         }
     }
 

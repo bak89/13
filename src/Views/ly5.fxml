@@ -10,39 +10,43 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../Design.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerScore">
-   <children>
-      <VBox alignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-         <children>
-            <Label prefHeight="70.0" prefWidth="131.0" text="SCORE" textFill="RED">
-               <padding>
-                  <Insets bottom="20.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0">
-                     <image>
-                        <Image url="@icon/icons8_winner_document_100px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <ListView fx:id="textArea" />
-            <Button fx:id="mainMenu" contentDisplay="TOP" mnemonicParsing="false" onAction="#mainMenu" text="Main Menu">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@icon/icons8_menu_2_100px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            stylesheets="@../Design.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.ControllerScore">
+    <children>
+        <VBox alignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"
+              AnchorPane.topAnchor="5.0">
+            <children>
+                <Label prefHeight="70.0" prefWidth="131.0" text="SCORE" textFill="RED">
+                    <padding>
+                        <Insets bottom="20.0"/>
+                    </padding>
+                    <font>
+                        <Font name="System Bold" size="24.0"/>
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0">
+                            <image>
+                                <Image url="@icon/icons8_winner_document_100px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+                <ListView fx:id="textArea"/>
+                <Button fx:id="mainMenu" contentDisplay="TOP" mnemonicParsing="false" onAction="#mainMenu"
+                        text="Main Menu">
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="@icon/icons8_menu_2_100px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

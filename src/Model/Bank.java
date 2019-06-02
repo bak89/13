@@ -5,15 +5,11 @@ import java.beans.PropertyChangeSupport;
 
 public class Bank {
 
-    private long money = 0;
+    private long money;
     private int bombCost = 50;
     private int undoCost = 20;
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
-
-    public Bank() {
-
-    }
 
     public Bank(long money) {
         this.money = money;

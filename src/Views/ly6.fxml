@@ -12,68 +12,80 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" stylesheets="@../Design.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerSettings">
-   <children>
-      <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-         <children>
-            <Label fx:id="labelSettings" text="Settings">
-               <VBox.margin>
-                  <Insets top="50.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="39.0" />
-               </font>
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@icon/icons8_settings_100px_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <MenuButton fx:id="gridSize" mnemonicParsing="false" text="Grid Size">
-              <items>
-                <MenuItem fx:id="mr" mnemonicParsing="false" text="Row">
-                     <graphic>
-                        <Slider fx:id="changeRow" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="3.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" style="-fx-border-color: black; -fx-background-color: black; -fx-background-size: 15;" value="1.0" />
-                     </graphic></MenuItem>
-                <MenuItem fx:id="mc" mnemonicParsing="false" text="Column">
-                     <graphic>
-                        <Slider fx:id="changeColumn" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="3.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
-                     </graphic></MenuItem>
-                  <MenuItem fx:id="mt" mnemonicParsing="false" text="Tile">
-                     <graphic>
-                        <Slider fx:id="changeTile" blockIncrement="1.0" majorTickUnit="5.0" min="10.0" minorTickCount="10" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
-                     </graphic>
-                  </MenuItem>
-              </items>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@icon/icons8_grid_100px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </MenuButton>
-            <Button fx:id="mainMenu" contentDisplay="TOP" mnemonicParsing="false" onAction="#mainMenu" text="Main Menu">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@icon/icons8_menu_2_100px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane fx:id="anchorPane" stylesheets="@../Design.css" xmlns="http://javafx.com/javafx/"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerSettings">
+    <children>
+        <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"
+              AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <children>
+                <Label fx:id="labelSettings" text="Settings">
+                    <VBox.margin>
+                        <Insets top="50.0"/>
+                    </VBox.margin>
+                    <font>
+                        <Font size="39.0"/>
+                    </font>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="@icon/icons8_settings_100px_1.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+                <MenuButton fx:id="gridSize" mnemonicParsing="false" text="Grid Size">
+                    <items>
+                        <MenuItem fx:id="mr" mnemonicParsing="false" text="Row">
+                            <graphic>
+                                <Slider fx:id="changeRow" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="3.0"
+                                        minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true"
+                                        style="-fx-border-color: black; -fx-background-color: black; -fx-background-size: 15;"
+                                        value="1.0"/>
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="mc" mnemonicParsing="false" text="Column">
+                            <graphic>
+                                <Slider fx:id="changeColumn" blockIncrement="1.0" majorTickUnit="1.0" max="10.0"
+                                        min="3.0" minorTickCount="0" showTickLabels="true" showTickMarks="true"
+                                        snapToTicks="true" value="1.0"/>
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="mt" mnemonicParsing="false" text="Tile">
+                            <graphic>
+                                <Slider fx:id="changeTile" blockIncrement="1.0" majorTickUnit="5.0" min="10.0"
+                                        minorTickCount="10" showTickLabels="true" showTickMarks="true"
+                                        snapToTicks="true" value="1.0"/>
+                            </graphic>
+                        </MenuItem>
+                    </items>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets top="30.0"/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="@icon/icons8_grid_100px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </MenuButton>
+                <Button fx:id="mainMenu" contentDisplay="TOP" mnemonicParsing="false" onAction="#mainMenu"
+                        text="Main Menu">
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="@icon/icons8_menu_2_100px.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

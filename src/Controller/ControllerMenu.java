@@ -9,13 +9,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ControllerMenu implements PropertyChangeListener, Initializable {
+public class ControllerMenu implements Initializable {
     @FXML
     public AnchorPane anchorPane;
     @FXML
@@ -24,8 +22,6 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
     private Button settings;
     @FXML
     private Button score;
-    @FXML
-    private Button language;
     @FXML
     private Label moneyField;
     @FXML
@@ -55,24 +51,12 @@ public class ControllerMenu implements PropertyChangeListener, Initializable {
         ViewChanger.changeToScore(anchorPane, userState, null);
     }
 
-    /*public void language(ActionEvent event) throws IOException {
-
-    }*/
-
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new FadeIn(anchorPane).play();
         newGame.setOnMouseEntered(event -> new Pulse(newGame).setSpeed(1.5).play());
         settings.setOnMouseEntered(event -> new Pulse(settings).setSpeed(1.5).play());
         score.setOnMouseEntered(event -> new Pulse(score).setSpeed(1.5).play());
-        language.setOnMouseEntered(event -> new Pulse(language).setSpeed(1.5).play());
-
     }
 }
 

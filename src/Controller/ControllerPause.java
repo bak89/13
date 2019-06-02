@@ -11,7 +11,6 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
 public class ControllerPause implements Initializable {
 
     @FXML

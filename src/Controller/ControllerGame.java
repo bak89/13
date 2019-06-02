@@ -42,6 +42,7 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
     private UserState userState;
     private GameBoard gameBoard;
     private Bank bank;
+    private MediaPlayer mediaPlayer;
 
     void init(UserState userState, GameBoard gameBoard, Bank bank) {
         this.userState = userState;
@@ -82,7 +83,7 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                     if (bomb.isSelected()) {
                         String musicFile = "nani.mp3";
                         Media naniSound = new Media(new File(musicFile).toURI().toString());
-                        MediaPlayer mediaPlayer = new MediaPlayer(naniSound);
+                        mediaPlayer = new MediaPlayer(naniSound);
                         mediaPlayer.play();
                         AnimationFX a = new BounceOut(tile);
                         a.setOnFinished(e -> {
@@ -96,7 +97,6 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
                     } else {
                         if (!gameBoard.isClickable(x1, y1)) {
                             new Wobble(tile).setSpeed(2).play();
-                            // new Pulse(tile).setSpeed(4).setCycleCount(2).play();
                             return;
                         }
                         bank.addMove();
@@ -128,8 +128,7 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch (evt.getPropertyName()) {
-            case "Fall":
-                //tutto gestito da tile
+            case "Fall"://all works in tile
                 break;
             case "Level":
                 if ((Integer) evt.getNewValue() > (Integer) evt.getOldValue()) {
@@ -169,12 +168,12 @@ public class ControllerGame implements PropertyChangeListener, Initializable {
         new FadeIn(anchorPane).play();
         pause.setOnMouseEntered(event -> new Pulse(pause).play());
         bomb.setOnMouseEntered(event -> new Pulse(bomb).play());
-       /* bomb.setOnAction(event -> {
+        bomb.setOnAction(event -> {
             String musicFile = "shindeiru.mp3";
             Media shindeiruSound = new Media(new File(musicFile).toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(shindeiruSound);
+            mediaPlayer = new MediaPlayer(shindeiruSound);
             mediaPlayer.play();
-        });*/
+        });
         undo.setOnMouseEntered(event -> new Pulse(undo).play());
     }
 }
